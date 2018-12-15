@@ -1,15 +1,12 @@
 $(document).ready(function(){
     SCREEN_HEIGHT = window.innerHeight;
     SCREEN_WIDTH = window.innerWidth;
-    //ORDENES SOBRE EL MENU
-    //TODO pasar esto a una función para controlar el menu.
-    $("#play").click(function(){
-        $("#menu").fadeOut("slow");
-        init();
-    });
+    initMenuHandler();
+    init();
 });
 
 function init() {
+    initAudio();
     initCanvas();
 	gameCoolDown = setTimeout("gameLoop()",1000);
 }

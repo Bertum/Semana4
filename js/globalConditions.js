@@ -6,7 +6,7 @@ var SCREEN_WIDTH;
 var gameCoolDown;
 
 //AUDIO
-var AUDIO_MANAGER = new AudioManager();
+var AUDIO_MANAGER;
 
 //CONTEXTOS
 var BACKGROUND_CTX;
