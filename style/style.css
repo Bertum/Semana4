@@ -1,5 +1,11 @@
-body,html{
+@font-face {
+    font-family: 'Unlock';
+    src: url('font/Unlock-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
+body,html{
     width:100%;
     height:100%;
     margin:0px;
@@ -26,14 +32,40 @@ canvas{
     z-index: 3;
 }
 
-#menu{
-    position:absolute;
+/* Ininio de estilos para el menú */
+#menuScreen{
+    position: absolute;
+    top: 0px;
+    left: 0px;
     width: 100%;
     height: 100%;
-    top:0px;
-    left:0px;
     text-align: center;
-    font-size:70px;
-    background-color: green;
+    font-family: 'Unlock', cursive;
+    font-size: 1.5em;
+    background-color: #0000009c;
+    z-index: 4;
 }
+
+#menu{
+    position: absolute;
+    padding-left: 20px;
+    padding-right: 20px;
+    top: 10%;
+    left: 20%;
+    width: 60%;
+    z-index: 5;
+    color: #ffa600;
+    text-shadow: 2px 2px #000000;
+}
+
+#logo{
+    height: 100px;
+}
+
+#logo img{
+    margin: auto;
+    width: 120px;
+    height: 120px;
+}
+/* Fin de estilos para el menú */
 
