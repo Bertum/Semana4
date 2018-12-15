@@ -4,12 +4,17 @@
         <script src="lib/jquery-3.3.1.min.js"></script>
         <script type="text/javascript" src="js/globalConditions.js"></script>
         <script type="text/javascript" src="js/functions.js"></script>
+        <script type="text/javascript" src="js/class/AudioManager.js"></script>
+        <script type="text/javascript" src="js/class/Npc.js"></script>
+        <script type="text/javascript" src="js/class/Player.js"></script>
         <script type="text/javascript" src="js/game.js"></script>
         <link rel="stylesheet" href="style/style.css" type="text/css" />
     </head>
     
     <body>
-        
+        <audio id="GameMusic" autoplay loop>
+            <source src="audio/GameMusic.mp3" type="audio/mp3">
+        </audio>
         <div id="contenedorCanvas">
             <canvas id="backgroundCanvas"></canvas>
             <canvas id="interactiveCanvas"></canvas>
