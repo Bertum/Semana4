@@ -19,14 +19,17 @@ imgHudTela.src = "img/materiales/tela.png"
 
 //OTROS
 var imgBocadillo = new Image();
-imgBocadillo.src="img/bocadillo.png";
+imgBocadillo.src = "img/bocadillo.png";
 
 
 //CONTEXTOS
-var contextBackground=document.getElementById("background").getContext("2d");
-var contextInteractiveObjects=document.getElementById("interactiveObjects").getContext("2d");
-var contextHud=document.getElementById("hud").getContext("2d");
-var contextBubblesNpc=document.getElementById("bubblesNpc").getContext("2d");
+var contextBackground = document.getElementById("background").getContext("2d");
+var contextInteractiveObjects = document.getElementById("interactiveObjects").getContext("2d");
+var contextHud = document.getElementById("hud").getContext("2d");
+var contextBubblesNpc = document.getElementById("bubblesNpc").getContext("2d");
+
+//AUDIO
+var audioManager = new AudioManager();
 
 
 
@@ -36,9 +39,8 @@ var contextBubblesNpc=document.getElementById("bubblesNpc").getContext("2d");
 
 
 //ORDENES SOBRE EL MENU
-$("#play").click(function(){
-    
+$("#play").click(function () {
     $("#menu").fadeOut("slow");
     inicio();
-    
+
 })
