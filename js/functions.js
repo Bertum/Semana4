@@ -26,3 +26,21 @@ function paintBubble(){
     //Aqui deberiamos meter un boton continuar si sigue habiendo mas texto
     
 }
+
+/**
+ * Inicializa los canvas del juego.
+ */
+function initCanvas() {
+    $("#backgroundCanvas").attr("width", SCREEN_WIDTH);
+	$("#backgroundCanvas").attr("height", SCREEN_HEIGHT);
+    BACKGROUND_CTX = document.getElementById("backgroundCanvas").getContext("2d");     //Canvas para el fondo
+    $("#interactiveCanvas").attr("width", SCREEN_WIDTH);
+	$("#interactiveCanvas").attr("height", SCREEN_HEIGHT);
+    INTERACTIVE_CTX = document.getElementById("interactiveCanvas").getContext("2d");   //Canvas para NPCs, Player and interactive objects
+    $("#hudCanvas").attr("width", SCREEN_WIDTH);
+	$("#hudCanvas").attr("height", SCREEN_HEIGHT);
+    HUD_CTX = document.getElementById("hudCanvas").getContext("2d");                   //Canvas para el hud
+    $("#dialogsCanvas").attr("width", SCREEN_WIDTH);
+	$("#dialogsCanvas").attr("height", SCREEN_HEIGHT);
+    DIALOGS_CTX = document.getElementById("dialogsCanvas").getContext("2d");           //Canvas para los dialogos
+}
