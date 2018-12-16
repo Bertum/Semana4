@@ -21,6 +21,15 @@ var DATA_BASE;
 var HUD;
 var INVENTORY;
 
+//MAPA
+var CURRENT_SCENE = 1;
+
+//MAPS
+var imgHome = new Image();
+imgHome.src = "img/map02.png";
+var imgForest = new Image();
+imgForest.src = "img/map10.png";
+
 //OTROS
 var imgBocadillo = new Image();
 imgBocadillo.src = "img/bocadillo.png";
@@ -31,3 +40,6 @@ Object.freeze(ItemTypes);
 
 //CHARACTER
 var character;
+
+//WORKERS
+var worker_Position = new Worker("js/isometricWorker.js");

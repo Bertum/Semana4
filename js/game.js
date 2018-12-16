@@ -10,7 +10,7 @@ function init() {
     initAudio();
     initCanvas();
     HUD = new HUD();
-    character = new Character(1, 1, 1, 50);
+    character = new Character(1, 0, 0);
     gameCoolDown = setTimeout("gameLoop()", 1000);
 }
 
@@ -21,6 +21,7 @@ function gameLoop() {
 
     //Actualiza y pinta el hud;
     HUD.update();
+
     character.update();
     //Dibujar bocadillo de texto
     paintBubble();
