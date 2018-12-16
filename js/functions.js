@@ -19,6 +19,7 @@ function paintHud() {
 }
 
 function paintBubble(){
+    
     //bocadillo
     DIALOGS_CTX.drawImage(imgBocadillo,0,625);
     DIALOGS_CTX.font = "30px Arial";
