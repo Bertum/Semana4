@@ -9,7 +9,7 @@ function init() {
     initDB();
     initAudio();
     initCanvas();
-    character = new Character(1, 1, 1, 50);
+    character = new Character(1, 0, 0);
     gameCoolDown = setTimeout("gameLoop()", 1000);
 }
 
@@ -18,7 +18,8 @@ function gameLoop() {
     INTERACTIVE_CTX.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     HUD_CTX.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     DIALOGS_CTX.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-
+    //Dibujar mapa
+    paintMap();
     //Dibujar hud
     paintHud();
     character.update();

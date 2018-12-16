@@ -1,4 +1,4 @@
-function Character(id, x, y, speed) {
+function Character(id, x, y) {
     this.id = id;
     this.sprite = new Image();
     this.spriteFrontLeft = new Image();
@@ -16,14 +16,23 @@ function Character(id, x, y, speed) {
     this.advanceX = 0;
     this.advanceY = 0;
     this.animationIndex = 0;
-    this.speed = speed;
+    this.test1 = 1;
+    this.test2 = 1;
 
     this.draw = function () {
-        this.x += this.advanceX * this.speed;
-        this.y += this.advanceY * this.speed;
-        var projectionX = (this.x / 2 - this.y / 2);
-        var projectionY = (this.x / 4 + this.y / 4);
-        INTERACTIVE_CTX.drawImage(this.sprite, this.animationIndex * 63, 0, 63, 110, projectionX, projectionY, 63, 101);
+        this.x += this.advanceX;
+        this.y += this.advanceY;
+        //var projectionX = (this.x / 2 - this.y / 2);
+        //var projectionY = (this.x / 4 + this.y / 4);
+        worker_Position.postMessage([this.x, this.y]);
+        worker_Position.onmessage = function (e) {
+            console.log("Char dice que: " + character.x, character.y);
+            console.log("Pero worker dice que: " + e.data[0], e.data[1]);
+            character.test1 = e.data[0];
+            character.test2 = e.data[1];
+            //INTERACTIVE_CTX.drawImage(character.sprite, character.animationIndex * 63, 0, 63, 110, e.data[0], e.data[1], 63, 101);
+        }
+        INTERACTIVE_CTX.drawImage(this.sprite, this.animationIndex * 63, 0, 63, 110, this.test1, this.test2, 63, 101);
     }
 
     this.update = function () {
@@ -33,30 +42,7 @@ function Character(id, x, y, speed) {
 
     /**Uso character en vez de this por que no funciona */
     this.move = function () {
-        $(document).ready(function () {
-            $(document).keypress(function (event) {
-                if (event.key == "w") { character.advanceX = 1; character.sprite = character.spriteFrontRight; }
-                if (event.key == "s") { character.advanceX = -1; character.sprite = character.spriteBackLeft; }
-                if (event.key == "a") { character.advanceY = 1; character.sprite = character.spriteFrontLeft; }
-                if (event.key == "d") { character.advanceY = -1; character.sprite = character.spriteBackRight; }
-                if (event.key == "e") { }
 
-                character.animationIndex++;
-                if (character.animationIndex == 11) {
-                    character.animationIndex = 0;
-                }
-            });
-            $(document).keyup(function (event) {
-                if (event.key == "w") { character.advanceX = 0; }
-                // A or D
-                if (event.key == "a") { character.advanceY = 0; }
-                // S
-                if (event.key == "s") { character.advanceX = 0; }
-                //D
-                if (event.key == "d") { character.advanceY = 0; }
-                character.animationIndex = 0;
-            });
-        });
     }
 
     this.setPosition = function (x, y) {

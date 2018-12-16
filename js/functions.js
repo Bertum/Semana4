@@ -1,3 +1,28 @@
+
+$(document).keypress(function (event) {
+    if (event.key == "w") { character.advanceX = -1; character.sprite = character.spriteFrontRight; }
+    if (event.key == "s") { character.advanceX = 1; character.sprite = character.spriteBackLeft; }
+    if (event.key == "a") { character.advanceY = -1; character.sprite = character.spriteFrontLeft; }
+    if (event.key == "d") { character.advanceY = 1; character.sprite = character.spriteBackRight; }
+    if (event.key == "e") { }
+
+    character.animationIndex++;
+    if (character.animationIndex == 11) {
+        character.animationIndex = 0;
+    }
+});
+$(document).keyup(function (event) {
+    if (event.key == "w") { character.advanceX = 0; }
+    // A or D
+    if (event.key == "a") { character.advanceY = 0; }
+    // S
+    if (event.key == "s") { character.advanceX = 0; }
+    //D
+    if (event.key == "d") { character.advanceY = 0; }
+    character.animationIndex = 0;
+});
+
+
 function paintHud() {
 
     HUD_CTX.font = "30px Arial";
@@ -26,6 +51,22 @@ function paintBubble() {
     DIALOGS_CTX.font = "30px Arial";
     DIALOGS_CTX.fillText("- O me construyes una buena piscina o voy a mojarme con el vecino, y te recuerdo que el tampoco tiene piscina", 50, 725)
     //Aqui deberiamos meter un boton continuar si sigue habiendo mas texto
+
+}
+
+function paintMap() {
+    //Deberíamos saber en qué mapa estamos
+    switch (CURRENT_SCENE) {
+        case 1:
+            BACKGROUND_CTX.drawImage(imgHome, 0, 0);
+            break;
+        case 2:
+            BACKGROUND_CTX.drawImage(imgForest, 0, 0);
+            break;
+        default:
+            BACKGROUND_CTX.drawImage(imgHome, 0, 0);
+            break;
+    }
 
 }
 
