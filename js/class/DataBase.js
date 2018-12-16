@@ -1,12 +1,12 @@
-function DataBase () {
+function DataBase() {
     var dbName = "GameDB";
     var dbVersion = "1.0";
     var dbDescription = "Almacena la información del juego.";
     var dbSize = 2 * 1024 * 1024;
     this.dataBase = openDatabase(dbName, dbVersion, dbDescription, dbSize);
 
-    this.createDataBase = function() {
-        this.dataBase.transaction(function(tx) {
+    this.createDataBase = function () {
+        this.dataBase.transaction(function (tx) {
             tx.executeSql('CREATE TABLE IF NOT EXISTS DIALOGS (id INTEGER PRIMARY KEY, dialog TEXT, momentum INTEGER, owner INTEGER)');
             tx.executeSql('CREATE TABLE IF NOT EXISTS NPCS (id INTEGER PRIMARY KEY, description TEXT)');
             tx.executeSql('CREATE TABLE IF NOT EXISTS SCENE (id INTEGER PRIMARY KEY, description TEXT)');
@@ -19,8 +19,8 @@ function DataBase () {
     /**
      * Inicializa los datos de una partida nueva.
      */
-    this.initDataBase = function() {
-        this.dataBase.transaction(function(tx) {
+    this.initDataBase = function () {
+        this.dataBase.transaction(function (tx) {
             //TODO
         });
     }
@@ -28,8 +28,8 @@ function DataBase () {
     /**
      * Devuelve una lista de objetos de un mapa según su ID.
      */
-    this.loadScene = function(sceneId) {
-        this.dataBase.transaction(function(tx) {
+    this.loadScene = function (sceneId) {
+        this.dataBase.transaction(function (tx) {
             //TODO 
         });
     }
@@ -37,8 +37,8 @@ function DataBase () {
     /**
      * Devuelve un dialogo según su ID.
      */
-    this.loadDialog = function(dialogId) {
-        this.dataBase.transaction(function(tx) {
+    this.loadDialog = function (dialogId) {
+        this.dataBase.transaction(function (tx) {
             //TODO
         });
     }
@@ -61,4 +61,4 @@ function DataBase () {
 
 // INTERACTIVE:
 // ID(PK)			TYPE(FK TYPES.ID)			SCENE(FK SCENE.ID)			X			Y			WASTED 
-                                                                                                    1
+1

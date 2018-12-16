@@ -6,11 +6,11 @@ function AudioManager() {
     this.winSound = new Audio("audio/win.wav");
 
     this.playMusic = function () {
-        this.music.addEventListener("ended", function() {
-			this.currentTime = 0;
-			this.play();
+        this.music.addEventListener("ended", function () {
+            this.currentTime = 0;
+            this.play();
         }, false);
-		this.music.play();
+        this.music.play();
     }
 
     this.playWaterSound = function () {

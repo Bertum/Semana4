@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function () {
     SCREEN_HEIGHT = window.innerHeight;
     SCREEN_WIDTH = window.innerWidth;
     initMenuHandler();
@@ -9,7 +9,7 @@ function init() {
     initDB();
     initAudio();
     initCanvas();
-	gameCoolDown = setTimeout("gameLoop()",1000);
+    gameCoolDown = setTimeout("gameLoop()", 1000);
 }
 
 function gameLoop() {
@@ -20,10 +20,10 @@ function gameLoop() {
 
     //Dibujar hud
     paintHud();
-    
+
     //Dibujar bocadillo de texto
     paintBubble();
-    
-	clearTimeout(gameCoolDown);
-	gameCoolDown = setTimeout("gameLoop()", 33);
+
+    clearTimeout(gameCoolDown);
+    gameCoolDown = setTimeout("gameLoop()", 33);
 }
