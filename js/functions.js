@@ -19,6 +19,7 @@ function paintHud() {
 }
 
 function paintBubble(){
+    // hola
     //bocadillo
     // comentario prueba.
     DIALOGS_CTX.drawImage(imgBocadillo,0,625);
