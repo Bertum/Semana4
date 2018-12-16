@@ -6,11 +6,14 @@ var isoY = 0;
 self.onmessage = function (e) {
     // Cojo la información que se me esta enviando
     message = e.data;
-    var x = e.data.posX;
-    var y = e.data.posY;
+    var x = message[0];
+    var y = message[1];
+    //Ahora tengo que calcular la posición de la celda
+    var posInX = 600 - 40 * (x + 1);
+    var posInY = 16 * (y + 1);
     // Calculo de proyecciones
-    isoX = (x / 2 - y / 2);
-    isoY = (x / 4 + y / 4);
+    isoX = (posInX / 2 - posInY / 2);
+    isoY = (posInX / 4 + posInY / 4);
     // Le devuelvo al programa principal
-    self.postMessage({ posX: isoX, posY: isoY });
+    self.postMessage([isoX, isoY]);
 }

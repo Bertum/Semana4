@@ -29,6 +29,22 @@ function paintBubble() {
 
 }
 
+function paintMap() {
+    //Deberíamos saber en qué mapa estamos
+    switch (CURRENT_SCENE) {
+        case 1:
+            BACKGROUND_CTX.drawImage(imgHome, 0, 0);
+            break;
+        case 2:
+            BACKGROUND_CTX.drawImage(imgForest, 0, 0);
+            break;
+        default:
+            BACKGROUND_CTX.drawImage(imgHome, 0, 0);
+            break;
+    }
+
+}
+
 /**
  * Inicializa el audio del juego.
  */

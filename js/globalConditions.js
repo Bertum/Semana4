@@ -17,6 +17,9 @@ var DIALOGS_CTX;
 //BASE DE DATOS
 var DATA_BASE;
 
+//MAPA
+var CURRENT_SCENE = 1;
+
 //IMAGENES
 //MATERIALES
 var imgHudCemento = new Image();
@@ -32,6 +35,11 @@ imgHudTacha.src = "img/materiales/tacha.png"
 var imgHudTela = new Image();
 imgHudTela.src = "img/materiales/tela.png"
 
+//MAPS
+var imgHome = new Image();
+imgHome.src = "img/map02.png";
+var imgForest = new Image();
+imgForest.src = "img/map10.png";
 
 //OTROS
 var imgBocadillo = new Image();

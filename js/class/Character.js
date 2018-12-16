@@ -23,6 +23,11 @@ function Character(id, x, y, speed) {
         this.y += this.advanceY * this.speed;
         var projectionX = (this.x / 2 - this.y / 2);
         var projectionY = (this.x / 4 + this.y / 4);
+        worker_Position.postMessage([this.x, this.y]);
+        worker_Position.onmessage = function (e) {
+            projectionX = e.data[0];
+            projectionY = e.data[1];
+        }
         INTERACTIVE_CTX.drawImage(this.sprite, this.animationIndex * 63, 0, 63, 110, projectionX, projectionY, 63, 101);
     }
 
