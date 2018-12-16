@@ -36,4 +36,9 @@ function Item(id, sprite, wastedSprite, x, y, itemType, scene, wasted, life) {
             }
         }
     }
+
+    this.setPosition = function (x, y) {
+        this.x = x;
+        this.y = y;
+    }
 }
