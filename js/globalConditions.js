@@ -32,4 +32,4 @@ imgHudTela.src = "img/materiales/tela.png"
 
 //OTROS
 var imgBocadillo = new Image();
-imgBocadillo.src="img/bocadillo.png";
+imgBocadillo.src = "img/bocadillo.png";
