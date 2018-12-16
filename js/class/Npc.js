@@ -37,9 +37,13 @@ this.draw = function () {
 
 
     //TODO calcular posicion isometrica con el worker;
+    worker_Position.postMessage({ posX: this.x, posY: this.y });
 
-    //TODO Pasarle la posicion al drawImage
-    INTERACTIVE_CTX.drawImage(this.img, 0, 0);
+    self.onmessage = function (e) {
+        //TODO Pasarle la posicion al drawImage
+        INTERACTIVE_CTX.drawImage(this.img, e.data.posX, e.data.posY);
+    }
+
 }
 
 

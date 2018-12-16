@@ -43,3 +43,6 @@ Object.freeze(ItemTypes);
 
 //CHARACTER
 var character;
+
+//WORKERS
+var worker_Position = new Worker("js/isometricWorker.js");
