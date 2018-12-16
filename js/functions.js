@@ -20,6 +20,7 @@ function paintHud() {
 
 function paintBubble(){
     //bocadillo
+    // comentario prueba.
     DIALOGS_CTX.drawImage(imgBocadillo,0,625);
     DIALOGS_CTX.font = "30px Arial";
     DIALOGS_CTX.fillText("- O me construyes una buena piscina o voy a mojarme con el vecino, y te recuerdo que el tampoco tiene piscina",50,725)
