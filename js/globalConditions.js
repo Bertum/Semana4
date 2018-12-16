@@ -32,6 +32,8 @@ imgHudTacha.src = "img/materiales/tacha.png"
 var imgHudTela = new Image();
 imgHudTela.src = "img/materiales/tela.png"
 
+//HUD
+var HUD = new HUD();
 
 //OTROS
 var imgBocadillo = new Image();

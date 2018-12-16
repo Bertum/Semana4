@@ -19,7 +19,6 @@ canvas{
 }
 
 #backgroundCanvas {
-    background-color: yellow;
     z-index: 0;
 }
 #interactiveCanvas {

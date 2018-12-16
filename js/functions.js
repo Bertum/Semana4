@@ -1,23 +1,3 @@
-function paintHud() {
-
-    HUD_CTX.font = "30px Arial";
-
-    HUD_CTX.drawImage(imgHudCemento, 20, 0, 125, 75);
-    HUD_CTX.fillText("x 0", 150, 50);
-
-    HUD_CTX.drawImage(imgHudMadera, 220, 0, 125, 75);
-    HUD_CTX.fillText("x 0", 350, 50);
-
-    HUD_CTX.drawImage(imgHudLadrillos, 420, 0, 125, 75);
-    HUD_CTX.fillText("x 0", 550, 50);
-
-    HUD_CTX.drawImage(imgHudTela, 620, 0, 125, 75);
-    HUD_CTX.fillText("x 0", 750, 50);
-
-    HUD_CTX.drawImage(imgHudTacha, 820, 0, 125, 75);
-    HUD_CTX.fillText("x 0", 950, 50);
-}
-
 function paintBubble() {
     // hola
     //bocadillo
@@ -41,11 +21,12 @@ function initAudio() {
 function initMenuHandler() {
     $("#menuPlay").click(function () {
         $("#menuScreen").fadeOut("slow");
-        AUDIO_MANAGER.playMusic();
         DATA_BASE.resetDataBase();
+        AUDIO_MANAGER.playMusic();
     });
     $("#menuContinue").click(function () {
-        $("#menuContinue").find("p").toggle(500);
+        $("#menuScreen").fadeOut("slow");
+        AUDIO_MANAGER.playMusic();
     });
     $("#menuHowToPlay").click(function () {
         $("#menuHowToPlay").find("p").toggle(500);
