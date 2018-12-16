@@ -18,7 +18,8 @@ function gameLoop() {
     BACKGROUND_CTX.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     INTERACTIVE_CTX.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     DIALOGS_CTX.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-
+    //Dibujar mapa
+    paintMap();
     //Actualiza y pinta el hud;
     HUD.update();
 
