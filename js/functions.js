@@ -42,6 +42,10 @@ function initMenuHandler() {
     $("#menuPlay").click(function () {
         $("#menuScreen").fadeOut("slow");
         AUDIO_MANAGER.playMusic();
+        DATA_BASE.resetDataBase();
+    });
+    $("#menuContinue").click(function () {
+        $("#menuContinue").find("p").toggle(500);
     });
     $("#menuHowToPlay").click(function () {
         $("#menuHowToPlay").find("p").toggle(500);

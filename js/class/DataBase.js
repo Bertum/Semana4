@@ -3,6 +3,7 @@ function DataBase() {
     var dbVersion = "1.0";
     var dbDescription = "Almacena la información del juego.";
     var dbSize = 2 * 1024 * 1024;
+    this.INVENTORY_TABLE = "INVENTORY";
     this.dataBase = openDatabase(dbName, dbVersion, dbDescription, dbSize);
 
     this.createDataBase = function () {
@@ -10,7 +11,7 @@ function DataBase() {
             tx.executeSql('CREATE TABLE IF NOT EXISTS DIALOGS (id INTEGER PRIMARY KEY, dialog TEXT, momentum INTEGER, owner INTEGER)');
             tx.executeSql('CREATE TABLE IF NOT EXISTS NPCS (id INTEGER PRIMARY KEY, description TEXT)');
             tx.executeSql('CREATE TABLE IF NOT EXISTS SCENE (id INTEGER PRIMARY KEY, description TEXT)');
-            tx.executeSql('CREATE TABLE IF NOT EXISTS INVENTORY (id INTEGER PRIMARY KEY, class TEXT, quantity INTEGER)');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS ' + this.INVENTORY_TABLE + ' (id INTEGER PRIMARY KEY, class TEXT, quantity INTEGER)');
             tx.executeSql('CREATE TABLE IF NOT EXISTS TYPES (id INTEGER PRIMARY KEY, class TEXT)');
             tx.executeSql('CREATE TABLE IF NOT EXISTS INTERACTIVE (id INTEGER PRIMARY KEY, type INTEGER, scene INTEGER, x INTEGER, y INTEGER, wasted INTEGER)');
         });
@@ -19,9 +20,14 @@ function DataBase() {
     /**
      * Inicializa los datos de una partida nueva.
      */
-    this.initDataBase = function () {
+    this.resetDataBase = function () {
         this.dataBase.transaction(function (tx) {
-            //TODO
+            // Tabla INVENTORY
+            tx.executeSql('DELETE FROM ' + this.INVENTORY_TABLE);
+            tx.executeSql('INSERT INTO ' + this.INVENTORY_TABLE + '(id, class, quantity) values(1, Rock, 0)');
+            tx.executeSql('INSERT INTO ' + this.INVENTORY_TABLE + '(id, class, quantity) values(2, Water, 0)');
+            tx.executeSql('INSERT INTO ' + this.INVENTORY_TABLE + '(id, class, quantity) values(3, Earth, 0)');
+            tx.executeSql('INSERT INTO ' + this.INVENTORY_TABLE + '(id, class, quantity) values(4, Wood, 0)');
         });
     }
 
@@ -42,6 +48,10 @@ function DataBase() {
             //TODO
         });
     }
+
+    /**
+     * devuelve un objeto Inventory con los datos de la base de datos ya cargados.
+     */
 }
 // TABLAS PARA BASE DE DATOS:
 // DIALOGS:
