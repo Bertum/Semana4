@@ -2,6 +2,7 @@ $(document).ready(function () {
     SCREEN_HEIGHT = window.innerHeight;
     SCREEN_WIDTH = window.innerWidth;
     initMenuHandler();
+    initKeyHandler();
     initDB();
     init();
 });
@@ -9,8 +10,9 @@ $(document).ready(function () {
 function init() {
     initAudio();
     initCanvas();
+    initScene();
     HUD = new HUD();
-    character = new Character(1, 0, 0);
+    character = new Character(1, 1, 1);
     gameCoolDown = setTimeout("gameLoop()", 1000);
 }
 
@@ -19,7 +21,7 @@ function gameLoop() {
     INTERACTIVE_CTX.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     DIALOGS_CTX.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     //Dibujar mapa
-    paintMap();
+    SCENE.draw();
     //Actualiza y pinta el hud;
     HUD.update();
 

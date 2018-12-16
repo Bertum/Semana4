@@ -9,15 +9,7 @@ function Npc(x, y) {
 
     this.img;
 
-    var direction = enumDirection.DERECHA;
-    var enumDirection = {
-        DERECHA: 0,
-        ABAJO: 1,
-        IZQUIERDA: 2,
-        ARRIBA: 3,
-    };
-    Object.freeze(enumDirection);
-
+    var direction = enumDirection.RIGHT;
 }
 
 this.interact = function () {
