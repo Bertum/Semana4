@@ -9,7 +9,7 @@ function init() {
     initDB();
     initAudio();
     initCanvas();
-    character = new Character(1, 801, -149, 50);
+    character = new Character(1, 0, 0);
     gameCoolDown = setTimeout("gameLoop()", 1000);
 }
 

@@ -1,3 +1,28 @@
+
+$(document).keypress(function (event) {
+    if (event.key == "w") { character.advanceX = -1; character.sprite = character.spriteFrontRight; }
+    if (event.key == "s") { character.advanceX = 1; character.sprite = character.spriteBackLeft; }
+    if (event.key == "a") { character.advanceY = -1; character.sprite = character.spriteFrontLeft; }
+    if (event.key == "d") { character.advanceY = 1; character.sprite = character.spriteBackRight; }
+    if (event.key == "e") { }
+
+    character.animationIndex++;
+    if (character.animationIndex == 11) {
+        character.animationIndex = 0;
+    }
+});
+$(document).keyup(function (event) {
+    if (event.key == "w") { character.advanceX = 0; }
+    // A or D
+    if (event.key == "a") { character.advanceY = 0; }
+    // S
+    if (event.key == "s") { character.advanceX = 0; }
+    //D
+    if (event.key == "d") { character.advanceY = 0; }
+    character.animationIndex = 0;
+});
+
+
 function paintHud() {
 
     HUD_CTX.font = "30px Arial";
