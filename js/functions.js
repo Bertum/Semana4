@@ -19,7 +19,9 @@ function paintHud() {
 }
 
 function paintBubble(){
+    // hola
     //bocadillo
+    // comentario prueba.
     DIALOGS_CTX.drawImage(imgBocadillo,0,625);
     DIALOGS_CTX.font = "30px Arial";
     DIALOGS_CTX.fillText("- O me construyes una buena piscina o voy a mojarme con el vecino, y te recuerdo que el tampoco tiene piscina",50,725)
@@ -40,6 +42,7 @@ function initMenuHandler() {
     $("#menuPlay").click(function(){
         $("#menuScreen").fadeOut("slow");
         AUDIO_MANAGER.playMusic();
+        DB_WORKER.postMessage("INIT");
     });
     $("#menuHowToPlay").click(function(){
         $("#menuHowToPlay").find("p").toggle(500);
@@ -64,4 +67,12 @@ function initCanvas() {
     $("#dialogsCanvas").attr("width", SCREEN_WIDTH);
 	$("#dialogsCanvas").attr("height", SCREEN_HEIGHT);
     DIALOGS_CTX = document.getElementById("dialogsCanvas").getContext("2d");           //Canvas para los dialogos
+}
+
+/**
+ * Inicializa la base de datos de la aplicación
+ */
+function initDB() {
+    DATA_BASE = new DataBase();
+    DATA_BASE.createDataBase();
 }

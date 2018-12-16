@@ -6,6 +6,7 @@ $(document).ready(function(){
 });
 
 function init() {
+    initDB();
     initAudio();
     initCanvas();
 	gameCoolDown = setTimeout("gameLoop()",1000);
