@@ -37,3 +37,6 @@ imgBocadillo.src = "img/bocadillo.png";
 //ENUMS
 var ItemTypes = { "Wood": 0, "Water": 1, "Mineral": 2 }
 Object.freeze(ItemTypes);
+
+//CHARACTER
+var character;
