@@ -24,10 +24,10 @@ function DataBase() {
         this.dataBase.transaction(function (tx) {
             // Tabla INVENTORY
             tx.executeSql('DELETE FROM ' + this.INVENTORY_TABLE);
-            tx.executeSql('INSERT INTO ' + this.INVENTORY_TABLE + '(id, class, quantity) values(1, Rock, 0)');
-            tx.executeSql('INSERT INTO ' + this.INVENTORY_TABLE + '(id, class, quantity) values(2, Water, 0)');
-            tx.executeSql('INSERT INTO ' + this.INVENTORY_TABLE + '(id, class, quantity) values(3, Earth, 0)');
-            tx.executeSql('INSERT INTO ' + this.INVENTORY_TABLE + '(id, class, quantity) values(4, Wood, 0)');
+            tx.executeSql('INSERT INTO ' + this.INVENTORY_TABLE + '(id, class, quantity) values(?, ?, ?)', [ItemTypes.Wood, "Wood", 0]);
+            tx.executeSql('INSERT INTO ' + this.INVENTORY_TABLE + '(id, class, quantity) values(?, ?, ?)', [ItemTypes.Water, "Water", 0]);
+            tx.executeSql('INSERT INTO ' + this.INVENTORY_TABLE + '(id, class, quantity) values(?, ?, ?)', [ItemTypes.Earth, "Earth", 0]);
+            tx.executeSql('INSERT INTO ' + this.INVENTORY_TABLE + '(id, class, quantity) values(?, ?, ?)', [ItemTypes.Rock, "Rock", 0]);
         });
     }
 
@@ -52,6 +52,38 @@ function DataBase() {
     /**
      * devuelve un objeto Inventory con los datos de la base de datos ya cargados.
      */
+    this.loadInventory = function () {
+        this.dataBase.transaction(function (tx) {
+            var inventory;
+            tx.executeSql('SELECT * FROM ' + this.INVENTORY_TABLE, [], function (tx, results) {
+                if (results.rows.length == 0) {
+                    INVENTORY = new Inventory(new Wood(0), new Water(0), new Earth(0), new Rock(0));
+                } else {
+                    var wood;
+                    var earth;
+                    var water;
+                    var rock;
+                    for (var i = 0; i < results.rows.length; i++) {
+                        switch (results.rows[i].id) {
+                            case ItemTypes.Water:
+                                water = new Water(results.rows[i].quantity)
+                                break;
+                            case ItemTypes.Wood:
+                                wood = new Wood(results.rows[i].quantity)
+                                break;
+                            case ItemTypes.Earth:
+                                earth = new Earth(results.rows[i].quantity)
+                                break;
+                            case ItemTypes.Rock:
+                                rock = new Rock(results.rows[i].quantity)
+                                break;
+                        }
+                    }
+                    INVENTORY = new Inventory(wood, water, earth, rock);
+                }
+            });
+        });
+    }
 }
 // TABLAS PARA BASE DE DATOS:
 // DIALOGS:

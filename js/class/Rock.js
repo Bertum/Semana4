@@ -1,6 +1,6 @@
 Rock.prototype = Object.create(Resources.prototype);
 function Rock(number) {
-    Resources.call(number);
+    Resources.call(this, number);
     this.img = new Image();
-    this.img.src = "img/stone.png";
+    this.img.src = "img/materials/stone.png";
 }

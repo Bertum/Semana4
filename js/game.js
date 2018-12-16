@@ -9,6 +9,7 @@ $(document).ready(function () {
 function init() {
     initAudio();
     initCanvas();
+    HUD = new HUD();
     character = new Character(1, 1, 1, 50);
     gameCoolDown = setTimeout("gameLoop()", 1000);
 }

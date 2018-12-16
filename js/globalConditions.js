@@ -17,30 +17,16 @@ var DIALOGS_CTX;
 //BASE DE DATOS
 var DATA_BASE;
 
-//IMAGENES
-//MATERIALES
-var imgHudCemento = new Image();
-imgHudCemento.src = "img/materiales/cemento.png"
-var imgHudHierro = new Image();
-imgHudHierro.src = "img/materiales/hierro.png"
-var imgHudLadrillos = new Image();
-imgHudLadrillos.src = "img/materiales/ladrillos.png"
-var imgHudMadera = new Image();
-imgHudMadera.src = "img/materiales/madera.png"
-var imgHudTacha = new Image();
-imgHudTacha.src = "img/materiales/tacha.png"
-var imgHudTela = new Image();
-imgHudTela.src = "img/materiales/tela.png"
-
 //HUD
-var HUD = new HUD();
+var HUD;
+var INVENTORY;
 
 //OTROS
 var imgBocadillo = new Image();
 imgBocadillo.src = "img/bocadillo.png";
 
 //ENUMS
-var ItemTypes = { "Wood": 0, "Water": 1, "Mineral": 2 }
+var ItemTypes = { "Wood": 0, "Water": 1, "Earth": 2, "Rock": 3 }
 Object.freeze(ItemTypes);
 
 //CHARACTER
