@@ -1,50 +1,55 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <script src="lib/jquery-3.3.1.min.js"></script>
-        <script type="text/javascript" src="js/globalConditions.js"></script>
-        <script type="text/javascript" src="js/functions.js"></script>
-        <script type="text/javascript" src="js/class/AudioManager.js"></script>
-        <script type="text/javascript" src="js/class/Npc.js"></script>
-        <script type="text/javascript" src="js/class/Player.js"></script>
-        <script type="text/javascript" src="js/game.js"></script>
-        <link rel="stylesheet" href="style/style.css" type="text/css" />
-    </head>
-    
-    <body>
-        <div id="contenedorCanvas">
-            <canvas id="backgroundCanvas"></canvas>
-            <canvas id="interactiveCanvas"></canvas>
-            <canvas id="hudCanvas"></canvas>
-            <canvas id="dialogsCanvas"></canvas> 
-        </div>
-        
-        <div id="menuScreen">
-            <div id="menu">
-                <h2> TITULO DEL JUEGO</h2>
-                <div class="menuButton" id="menuPlay">
-                    <h3>Play</h3>               
-                </div>
-                <div class="menuButton" id="menuHowToPlay">
-                    <h3>How to play</h3>
-                    <p style="display:none;">
-                        Instrucciones:<br>
-                        Utiliza las teclas W A S D para moverte por el mapa.<br>
-                        Utiliza la tecla E para realizar acciones.<br>
-                        Utiliza los numeros para elegir opciones en los dialogos.<br>
-                    </p>                
-                </div>
-                <div class="menuButton" id="menuCredits">
-                    <h3>Credits</h3>
-                    <p style="display:none;">
-                        Aqui hay que escribir los creditos y poner de donde robamos y quien programa, quien prepara los cafes y esas cosas.
-                    </p>                
-                </div>
-                <div id="logo">
-                    <img src="img/logo_UA.svg">
-                </div>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="lib/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/globalConditions.js"></script>
+    <script type="text/javascript" src="js/functions.js"></script>
+    <script type="text/javascript" src="js/class/AudioManager.js"></script>
+    <script type="text/javascript" src="js/class/Npc.js"></script>
+    <script type="text/javascript" src="js/class/Item.js"></script>
+    <script type="text/javascript" src="js/class/Player.js"></script>
+    <script type="text/javascript" src="js/class/Character.js"></script>
+    <script type="text/javascript" src="js/game.js"></script>
+    <link rel="stylesheet" href="style/style.css" type="text/css" />
+</head>
+
+<body>
+    <div id="contenedorCanvas">
+        <canvas id="backgroundCanvas"></canvas>
+        <canvas id="interactiveCanvas"></canvas>
+        <canvas id="hudCanvas"></canvas>
+        <canvas id="dialogsCanvas"></canvas>
+    </div>
+
+    <div id="menuScreen">
+        <div id="menu">
+            <h2> TITULO DEL JUEGO</h2>
+            <div class="menuButton" id="menuPlay">
+                <h3>Play</h3>
+            </div>
+            <div class="menuButton" id="menuHowToPlay">
+                <h3>How to play</h3>
+                <p style="display:none;">
+                    Instrucciones:<br>
+                    Utiliza las teclas W A S D para moverte por el mapa.<br>
+                    Utiliza la tecla E para realizar acciones.<br>
+                    Utiliza los numeros para elegir opciones en los dialogos.<br>
+                </p>
+            </div>
+            <div class="menuButton" id="menuCredits">
+                <h3>Credits</h3>
+                <p style="display:none;">
+                    Aqui hay que escribir los creditos y poner de donde robamos y quien programa, quien prepara los
+                    cafes y esas cosas.
+                </p>
+            </div>
+            <div id="logo">
+                <img src="img/logo_UA.svg">
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>

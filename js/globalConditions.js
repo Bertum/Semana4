@@ -32,4 +32,11 @@ imgHudTela.src = "img/materiales/tela.png"
 
 //OTROS
 var imgBocadillo = new Image();
-imgBocadillo.src="img/bocadillo.png";
+imgBocadillo.src = "img/bocadillo.png";
+
+//ENUMS
+var ItemTypes = { "Wood": 0, "Water": 1, "Mineral": 2 }
+Object.freeze(ItemTypes);
+
+//CHARACTER
+var character;
