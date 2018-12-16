@@ -14,6 +14,9 @@ var INTERACTIVE_CTX;
 var HUD_CTX;
 var DIALOGS_CTX;
 
+//BASE DE DATOS
+var DATA_BASE;
+
 //IMAGENES
 //MATERIALES
 var imgHudCemento = new Image();
