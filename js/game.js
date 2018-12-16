@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function () {
     SCREEN_HEIGHT = window.innerHeight;
     SCREEN_WIDTH = window.innerWidth;
     initMenuHandler();
@@ -6,9 +6,11 @@ $(document).ready(function(){
 });
 
 function init() {
+    initDB();
     initAudio();
     initCanvas();
-	gameCoolDown = setTimeout("gameLoop()",1000);
+    character = new Character(1, 1, 1, 50);
+    gameCoolDown = setTimeout("gameLoop()", 1000);
 }
 
 function gameLoop() {
@@ -19,10 +21,14 @@ function gameLoop() {
 
     //Dibujar hud
     paintHud();
-    
+<<<<<<< HEAD
+
+=======
+    character.update();
+>>>>>>> 46fa7c9f1dd90f07c5cdf13f438b63ee7e2d9441
     //Dibujar bocadillo de texto
     paintBubble();
-    
-	clearTimeout(gameCoolDown);
-	gameCoolDown = setTimeout("gameLoop()", 33);
+
+    clearTimeout(gameCoolDown);
+    gameCoolDown = setTimeout("gameLoop()", 33);
 }

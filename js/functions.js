@@ -67,3 +67,11 @@ function initCanvas() {
     $("#dialogsCanvas").attr("height", SCREEN_HEIGHT);
     DIALOGS_CTX = document.getElementById("dialogsCanvas").getContext("2d");           //Canvas para los dialogos
 }
+
+/**
+ * Inicializa la base de datos de la aplicación
+ */
+function initDB() {
+    DATA_BASE = new DataBase();
+    DATA_BASE.createDataBase();
+}

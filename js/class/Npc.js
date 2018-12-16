@@ -8,6 +8,16 @@ function Npc(x, y) {
     this.dialogsRandom;
 
     this.img;
+
+    var direction = enumDirection.DERECHA;
+    var enumDirection = {
+        DERECHA: 0,
+        ABAJO: 1,
+        IZQUIERDA: 2,
+        ARRIBA: 3,
+    };
+    Object.freeze(enumDirection);
+
 }
 
 this.interact = function () {
@@ -17,7 +27,6 @@ this.interact = function () {
 this.talk = function () {
 
     //TODO Aqui recojo el texto a pintar
-
 
     //TODO Lammar a la funcion que pinta el texto por pantalla
 
@@ -29,7 +38,7 @@ this.draw = function () {
 
     //TODO calcular posicion isometrica con el worker;
 
-
+    //TODO Pasarle la posicion al drawImage
     INTERACTIVE_CTX.drawImage(this.img, 0, 0);
 }
 
