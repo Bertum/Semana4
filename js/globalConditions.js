@@ -21,6 +21,9 @@ var DATA_BASE;
 var HUD;
 var INVENTORY;
 
+//PARTIDA
+var game_InteractiveObjects;
+
 //MAPA
 var CURRENT_SCENE = 1;
 
