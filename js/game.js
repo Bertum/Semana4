@@ -14,6 +14,7 @@ function init() {
     initCanvas();
     initScene();
     HUD = new HUD();
+    character = new Character(1, 0, 0);
     dialogManager = new DialogManager();
     var arrayText = new Array();
     //Prueba, esto se debe eliminar y cambiar con los textos correctos
@@ -21,7 +22,6 @@ function init() {
     arrayText.push("hola2");
     arrayText.push("hola3");
     dialogManager.showText(arrayText);
-    character = new Character(1, 0, 0);
     gameCoolDown = setTimeout("gameLoop()", 1000);
 }
 
