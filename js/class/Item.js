@@ -45,20 +45,27 @@ function Item(id, x, y, type, scene, wasted) {
             break;
     }
 
-    this.pickUp = function () {
+    this.interact = function () {
         if (!this.wasted) {
             this.life--;
             switch (this.itemType) {
-                case ItemTypes.Mineral: AUDIO_MANAGER.playMiningSound();
+                case ItemTypes.Mineral:
+                    AUDIO_MANAGER.playMiningSound();
+                    INVENTORY.rock.quantity++;
                     break;
-                case ItemTypes.Water: AUDIO_MANAGER.playWaterSound();
+                case ItemTypes.Water:
+                    AUDIO_MANAGER.playWaterSound();
+                    INVENTORY.water.quantity++;
                     break;
-                case ItemTypes.Wood: AUDIO_MANAGER.playWoodSound();
+                case ItemTypes.Wood:
+                    AUDIO_MANAGER.playWoodSound();
+                    INVENTORY.wood.quantity++;
                     break;
             }
             if (this.life == 0) {
                 this.remove();
             }
+            //TODO Peticion de actu de base de datos
         }
     }
 

@@ -8,6 +8,7 @@ function initKeyHandler() {
         if (event.key == "a") { character.nextMove = enumDirection.LEFT; character.sprite = character.spriteLeft; }
         if (event.key == "d") { character.nextMove = enumDirection.RIGHT; character.sprite = character.spriteRight; }
         if (event.key == "e") { dialogManager.checkNextText(); }
+        if (event.key == "f") { }
 
         // character.animationIndex++;
         // if (character.animationIndex == 11) {
@@ -40,6 +41,7 @@ function initMenuHandler() {
         //Carga los objetos interactivos de la escena actual
         DATA_BASE.loadScene();
         //AUDIO_MANAGER.playMusic();
+        gameCoolDown = setTimeout("gameLoop()", 1000);
     });
     $("#menuContinue").click(function () {
         $("#menuScreen").fadeOut("slow");
@@ -47,6 +49,7 @@ function initMenuHandler() {
         //Carga los objetos interactivos de la escena actual
         DATA_BASE.loadScene();
         //AUDIO_MANAGER.playMusic();
+        gameCoolDown = setTimeout("gameLoop()", 1000);
     });
     $("#menuHowToPlay").click(function () {
         $("#menuHowToPlay").find("p").toggle(500);
@@ -117,23 +120,18 @@ function fillInteractiveObjects(datos) {
  * Crear un array bidimensional de el tamaño pasado
  */
 function create2DArray(size) {
-    var arr = [];
+    var arr = new Array();
 
     // Creates all lines:
     for (var i = 0; i < size; i++) {
-
-        // // Creates an empty line
-        arr.push([]);
-
-        // Adds cols to the empty line:
-        arr[i].push(new Array(size));
-
-        for (var j = 0; j < size; j++) {
-            // Initializes:
-            arr[i][j] = null;
-        }
+        arr.push(new Array());
     }
 
-    return arr;
+    for (var x = 0; x < 16; x++) {
+        for (var y = 0; y < 16; y++) {
+            arr[x][y] = undefined;
+        }
+    };
 
+    return arr;
 }
