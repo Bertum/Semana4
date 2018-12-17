@@ -24,11 +24,14 @@ canvas{
 #interactiveCanvas {
     z-index: 1;
 }
-#hudCanvas {
+#playerCanvas {
     z-index: 2;
 }
-#dialogsCanvas {
+#hudCanvas {
     z-index: 3;
+}
+#dialogsCanvas {
+    z-index: 4;
 }
 
 /* Ininio de estilos para el menú */

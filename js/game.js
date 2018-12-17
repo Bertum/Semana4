@@ -27,6 +27,7 @@ function init() {
 
 function gameLoop() {
     BACKGROUND_CTX.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    PLAYER_CTX.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     HUD_CTX.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     DIALOGS_CTX.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     //Dibujar mapa
@@ -35,6 +36,7 @@ function gameLoop() {
     HUD.update();
     //Actualiza el dialog manager
     dialogManager.update();
+    //drawInteractiveObjects(INTERACTIVE_RESULTS);
     character.update();
 
     clearTimeout(gameCoolDown);

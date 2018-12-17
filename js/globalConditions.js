@@ -11,6 +11,7 @@ var AUDIO_MANAGER;
 //CONTEXTOS
 var BACKGROUND_CTX;
 var INTERACTIVE_CTX;
+var PLAYER_CTX;
 var HUD_CTX;
 var DIALOGS_CTX;
 
@@ -27,6 +28,9 @@ var game_InteractiveObjects;
 //MAPA
 var SCENE;
 var CURRENT_SCENE = 1;
+
+//
+var INTERACTIVE_RESULTS;
 
 //ENUMS
 var ItemTypes = { "Wood": 0, "Water": 1, "Earth": 2, "Rock": 3 }
