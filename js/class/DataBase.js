@@ -3,7 +3,6 @@ function DataBase() {
     var dbVersion = "1.0";
     var dbDescription = "Almacena la información del juego.";
     var dbSize = 2 * 1024 * 1024;
-    this.INVENTORY_TABLE = "INVENTORY";
     this.dataBase = openDatabase(dbName, dbVersion, dbDescription, dbSize);
 
     this.createDataBase = function () {
@@ -11,7 +10,7 @@ function DataBase() {
             tx.executeSql('CREATE TABLE IF NOT EXISTS DIALOGS (id INTEGER PRIMARY KEY, dialog TEXT, momentum INTEGER, owner INTEGER)');
             tx.executeSql('CREATE TABLE IF NOT EXISTS NPCS (id INTEGER PRIMARY KEY, description TEXT)');
             tx.executeSql('CREATE TABLE IF NOT EXISTS SCENE (id INTEGER PRIMARY KEY, description TEXT)');
-            tx.executeSql('CREATE TABLE IF NOT EXISTS ' + this.INVENTORY_TABLE + ' (id INTEGER PRIMARY KEY, class TEXT, quantity INTEGER)');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS INVENTORY (id INTEGER PRIMARY KEY, class TEXT, quantity INTEGER)');
             tx.executeSql('CREATE TABLE IF NOT EXISTS TYPES (id INTEGER PRIMARY KEY, class TEXT)');
             tx.executeSql('CREATE TABLE IF NOT EXISTS INTERACTIVE (id INTEGER PRIMARY KEY, type INTEGER, scene INTEGER, x INTEGER, y INTEGER, wasted INTEGER)');
         });
@@ -23,21 +22,21 @@ function DataBase() {
     this.resetDataBase = function () {
         this.dataBase.transaction(function (tx) {
             // Tabla INVENTORY
-            tx.executeSql('DELETE FROM ' + this.INVENTORY_TABLE);
-            tx.executeSql('INSERT INTO ' + this.INVENTORY_TABLE + '(id, class, quantity) values(?, ?, ?)', [ItemTypes.Wood, "Wood", 0]);
-            tx.executeSql('INSERT INTO ' + this.INVENTORY_TABLE + '(id, class, quantity) values(?, ?, ?)', [ItemTypes.Water, "Water", 0]);
-            tx.executeSql('INSERT INTO ' + this.INVENTORY_TABLE + '(id, class, quantity) values(?, ?, ?)', [ItemTypes.Rock, "Rock", 0]);
+            tx.executeSql('DELETE FROM INVENTORY');
+            tx.executeSql('INSERT INTO INVENTORY (id, class, quantity) values(?, ?, ?)', [ItemTypes.Wood, "Wood", 0], function () { console.log("success") }, function () { console.log("error") });
+            tx.executeSql('INSERT INTO INVENTORY (id, class, quantity) values(?, ?, ?)', [ItemTypes.Water, "Water", 0]);
+            tx.executeSql('INSERT INTO INVENTORY (id, class, quantity) values(?, ?, ?)', [ItemTypes.Rock, "Rock", 0]);
 
             // Tabla TYPES
-            tx.executeSql('DELETE FROM TYPES');
-            tx.executeSql('INSERT INTO TYPE (id, class) values(?,?)', [1, "three"]);
-            tx.executeSql('INSERT INTO TYPE (id, class) values(?,?)', [2, "rock"]);
-            tx.executeSql('INSERT INTO TYPE (id, class) values(?,?)', [3, "water"]);
-            tx.executeSql('INSERT INTO TYPE (id, class) values(?,?)', [4, "house"]);
+            tx.executeSql("DELETE FROM TYPES", [], function () { console.log("Successfully Deleted") }, function () { console.log("Could not delete") });
+            tx.executeSql('INSERT INTO TYPES (id, class) values(?,?)', [1, "tree"]);
+            tx.executeSql('INSERT INTO TYPES (id, class) values(?,?)', [2, "rock"]);
+            tx.executeSql('INSERT INTO TYPES (id, class) values(?,?)', [3, "water"]);
+            tx.executeSql('INSERT INTO TYPES (id, class) values(?,?)', [4, "house"]);
 
             // Tabla INTERACTIVE
-            tx.executeSql('DELETE FROM INTERACTIVE');
-            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [4, 1, 4, 4, 0]);
+            tx.executeSql('DELETE FROM INTERACTIVE', [], function () { console.log("Successfully Deleted") }, function () { console.log("Could not delete") });
+            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [4, 1, 4, 4, 0], function () { console.log("success") }, function () { console.log("error") });
             tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [4, 1, 4, 5, 0]);
             tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [4, 1, 4, 6, 0]);
             tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [4, 1, 5, 4, 0]);
@@ -85,7 +84,7 @@ function DataBase() {
      */
     this.loadInventory = function () {
         this.dataBase.transaction(function (tx) {
-            tx.executeSql('SELECT * FROM ' + this.INVENTORY_TABLE, [], function (tx, results) {
+            tx.executeSql('SELECT * FROM INVENTORY', [], function (tx, results) {
                 if (results.rows.length == 0) {
                     INVENTORY = new Inventory(new Wood(0), new Water(0), new Rock(0));
                 } else {
