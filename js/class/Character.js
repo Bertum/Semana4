@@ -68,6 +68,7 @@ function Character(id, x, y) {
     this.checkTeleportLeft = function () {
         if (this.y + 1 > 15 && (this.x == 4 || this.x == 5 || this.x == 6) && CURRENT_SCENE == 1) {
             CURRENT_SCENE = 2;
+            DATA_BASE.loadScene();
             this.y = 0;
             this.x += 2;
         }
@@ -76,8 +77,10 @@ function Character(id, x, y) {
     this.checkTeleportRight = function () {
         if (this.y - 1 < 0 && (this.x == 10 || this.x == 11 || this.x == 12) && CURRENT_SCENE == 1) {
             CURRENT_SCENE = 2;
+            DATA_BASE.loadScene();
         } else if (this.y - 1 < 0 && (this.x == 6 || this.x == 7 || this.x == 8) && CURRENT_SCENE == 2) {
             CURRENT_SCENE = 1;
+            DATA_BASE.loadScene();
             this.y = 15;
             this.x -= 2;
         }
@@ -86,12 +89,14 @@ function Character(id, x, y) {
     this.checkTeleportUp = function () {
         if (this.x - 1 < 0 && (this.y == 7 || this.y == 8 || this.y == 9) && CURRENT_SCENE == 1) {
             CURRENT_SCENE = 2;
+            DATA_BASE.loadScene();
         }
     }
 
     this.checkTeleportDown = function () {
         if (this.x + 1 > 15 && (this.y == 7 || this.y == 8 || this.y == 9) && CURRENT_SCENE == 1) {
             CURRENT_SCENE = 2;
+            DATA_BASE.loadScene();
         }
     }
 }
