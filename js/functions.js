@@ -71,6 +71,9 @@ function initCanvas() {
     $("#dialogsCanvas").attr("width", SCREEN_WIDTH);
     $("#dialogsCanvas").attr("height", SCREEN_HEIGHT);
     DIALOGS_CTX = document.getElementById("dialogsCanvas").getContext("2d");           //Canvas para los dialogos
+    $("#playerCanvas").attr("width", SCREEN_WIDTH);
+    $("#playerCanvas").attr("height", SCREEN_HEIGHT);
+    PLAYER_CTX = document.getElementById("playerCanvas").getContext("2d");            //Canvas para el jugador
 }
 
 /**

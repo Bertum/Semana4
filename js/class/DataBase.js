@@ -26,21 +26,35 @@ function DataBase() {
             tx.executeSql('DELETE FROM ' + this.INVENTORY_TABLE);
             tx.executeSql('INSERT INTO ' + this.INVENTORY_TABLE + '(id, class, quantity) values(?, ?, ?)', [ItemTypes.Wood, "Wood", 0]);
             tx.executeSql('INSERT INTO ' + this.INVENTORY_TABLE + '(id, class, quantity) values(?, ?, ?)', [ItemTypes.Water, "Water", 0]);
-            tx.executeSql('INSERT INTO ' + this.INVENTORY_TABLE + '(id, class, quantity) values(?, ?, ?)', [ItemTypes.Earth, "Earth", 0]);
             tx.executeSql('INSERT INTO ' + this.INVENTORY_TABLE + '(id, class, quantity) values(?, ?, ?)', [ItemTypes.Rock, "Rock", 0]);
-        });
 
-        /**
-         * TODO Creamos todos los objetos interactivos de el juego
-         * (NPCS??????)
-         */
-        this.dataBase.transaction(function (tx) {
+            // Tabla TYPES
+            tx.executeSql('DELETE FROM TYPES');
+            tx.executeSql('INSERT INTO TYPE (id, class) values(?,?)', [1, "three"]);
+            tx.executeSql('INSERT INTO TYPE (id, class) values(?,?)', [2, "rock"]);
+            tx.executeSql('INSERT INTO TYPE (id, class) values(?,?)', [3, "water"]);
+            tx.executeSql('INSERT INTO TYPE (id, class) values(?,?)', [4, "house"]);
+
             // Tabla INTERACTIVE
             tx.executeSql('DELETE FROM INTERACTIVE');
-            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [1, 1, 0, 0, 0]);
-            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [1, 1, 0, 2, 0]);
-            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [1, 1, 2, 0, 0]);
-            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [1, 1, 15, 15, 0]);
+            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [4, 1, 4, 4, 0]);
+            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [4, 1, 4, 5, 0]);
+            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [4, 1, 4, 6, 0]);
+            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [4, 1, 5, 4, 0]);
+            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [4, 1, 5, 5, 0]);
+            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [4, 1, 5, 6, 0]);
+            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [4, 1, 6, 5, 0]);
+            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [4, 1, 6, 5, 0]);
+            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [4, 1, 6, 6, 0]);
+            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [2, 2, 15, 11, 0]);
+            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [2, 2, 15, 10, 0]);
+            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [2, 2, 14, 11, 0]);
+            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [2, 2, 14, 10, 0]);
+            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [2, 2, 14, 9, 0]);
+            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [2, 2, 14, 1, 0]);
+            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [2, 2, 6, 5, 0]);
+            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [2, 2, 7, 5, 0]);
+            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [2, 2, 7, 6, 0]);
         });
     }
 
@@ -48,7 +62,6 @@ function DataBase() {
      * Devuelve una lista de objetos de un mapa según su ID.
      */
     this.loadScene = function () {
-
         this.dataBase.transaction(function (tx) {
             tx.executeSql('SELECT * FROM INTERACTIVE WHERE scene=' + CURRENT_SCENE, [], function (tx, results) {
                 //console.log("Conseguimos los INTERACTIVE")
@@ -72,13 +85,11 @@ function DataBase() {
      */
     this.loadInventory = function () {
         this.dataBase.transaction(function (tx) {
-            var inventory;
             tx.executeSql('SELECT * FROM ' + this.INVENTORY_TABLE, [], function (tx, results) {
                 if (results.rows.length == 0) {
-                    INVENTORY = new Inventory(new Wood(0), new Water(0), new Earth(0), new Rock(0));
+                    INVENTORY = new Inventory(new Wood(0), new Water(0), new Rock(0));
                 } else {
                     var wood;
-                    var earth;
                     var water;
                     var rock;
                     for (var i = 0; i < results.rows.length; i++) {
@@ -89,15 +100,12 @@ function DataBase() {
                             case ItemTypes.Wood:
                                 wood = new Wood(results.rows[i].quantity)
                                 break;
-                            case ItemTypes.Earth:
-                                earth = new Earth(results.rows[i].quantity)
-                                break;
                             case ItemTypes.Rock:
                                 rock = new Rock(results.rows[i].quantity)
                                 break;
                         }
                     }
-                    INVENTORY = new Inventory(wood, water, earth, rock);
+                    INVENTORY = new Inventory(wood, water, rock);
                 }
             });
         });
@@ -121,4 +129,3 @@ function DataBase() {
 
 // INTERACTIVE:
 // ID(PK)			TYPE(FK TYPES.ID)			SCENE(FK SCENE.ID)			X			Y			WASTED 
-1

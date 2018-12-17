@@ -1,6 +1,5 @@
-function Inventory(woodObject, waterObject, earthObject, rockObject) {
+function Inventory(woodObject, waterObject, rockObject) {
     this.wood = woodObject;
     this.water = waterObject;
-    this.earth = earthObject;
     this.rock = rockObject;
 }
