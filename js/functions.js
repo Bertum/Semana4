@@ -62,11 +62,15 @@ function initMenuHandler() {
         $("#menuScreen").fadeOut("slow");
         DATA_BASE.resetDataBase();
         DATA_BASE.loadInventory();
+        //Carga los objetos interactivos de la escena actual
+        DATA_BASE.loadScene();
         //AUDIO_MANAGER.playMusic();
     });
     $("#menuContinue").click(function () {
         $("#menuScreen").fadeOut("slow");
         DATA_BASE.loadInventory();
+        //Carga los objetos interactivos de la escena actual
+        DATA_BASE.loadScene();
         //AUDIO_MANAGER.playMusic();
     });
     $("#menuHowToPlay").click(function () {
@@ -100,4 +104,53 @@ function initCanvas() {
 function initDB() {
     DATA_BASE = new DataBase();
     DATA_BASE.createDataBase();
+}
+
+/**
+ * Carga los objetos interactivos de la escena actual,se llama desde el objeto data_base
+ */
+function gameChangeScene(datos) {
+
+    //Carga de estos en la matriz
+    //Limpimiamos pantalla
+    INTERACTIVE_CTX.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    //Y creamos y pintamos cada item
+    for (var i = 0; i < datos.rows.length; i++) {
+        if (datos.rows[i].wasted == 0) {
+            game_InteractiveObjects[datos.rows[i].x][datos.rows[i].y] = new Item(
+                datos.rows[i].id,
+                datos.rows[i].x,
+                datos.rows[i].y,
+                datos.rows[i].type,
+                datos.rows[i].scene,
+                datos.rows[i].wasted
+            )
+            game_InteractiveObjects[datos.rows[i].x][datos.rows[i].y].draw();
+        }
+    }
+}
+
+/**
+ * Crear un array bidimensional de el tamaño pasado
+ */
+function create2DArray(size) {
+    var arr = [];
+
+    // Creates all lines:
+    for (var i = 0; i < size; i++) {
+
+        // Creates an empty line
+        arr.push([]);
+
+        // Adds cols to the empty line:
+        arr[i].push(new Array(size));
+
+        for (var j = 0; j < size; j++) {
+            // Initializes:
+            arr[i][j] = null;
+        }
+    }
+
+    return arr;
+
 }
