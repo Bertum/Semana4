@@ -21,13 +21,12 @@ var DATA_BASE;
 var HUD;
 var INVENTORY;
 
+//PARTIDA
+var game_InteractiveObjects;
+
 //MAPA
 var SCENE;
 var CURRENT_SCENE = 1;
-
-//OTROS
-var imgBocadillo = new Image();
-imgBocadillo.src = "img/bocadillo.png";
 
 //ENUMS
 var ItemTypes = { "Wood": 0, "Water": 1, "Earth": 2, "Rock": 3 }
@@ -45,3 +44,6 @@ var character;
 
 //WORKERS
 var worker_Position = new Worker("js/isometricWorker.js");
+
+//Dialog manager
+var dialogManager;

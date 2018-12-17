@@ -18,6 +18,7 @@ function Character(id, x, y) {
     this.animationIndex = 0;
     this.proyX = 1;
     this.proyY = 1;
+    this.textEnable = false;
 
     this.draw = function () {
         switch (this.nextMove) {
@@ -37,16 +38,12 @@ function Character(id, x, y) {
                 break;
         }
         this.nextMove = undefined;
-        //var projectionX = (this.x / 2 - this.y / 2);
-        //var projectionY = (this.x / 4 + this.y / 4);
-        // worker_Position.postMessage([this.x, this.y]);
         worker_Position.postMessage({ "x": this.x, "y": this.y, "width": this.width, "height": this.height, "mapX": SCENE.width / 2, "mapY": 0, "tileWidth": SCENE.tileWidth, "tileHeight": SCENE.tileHeight });
         worker_Position.onmessage = function (e) {
             console.log("Char dice que: " + character.x, character.y);
             console.log("Pero worker dice que: " + e.data[0], e.data[1]);
             character.proyX = e.data[0];
             character.proyY = e.data[1];
-            //INTERACTIVE_CTX.drawImage(character.sprite, character.animationIndex * 63, 0, 63, 110, e.data[0], e.data[1], 63, 101);
         }
         // this.animationIndex++;
         // if (this.animationIndex == 11) {

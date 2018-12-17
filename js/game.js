@@ -1,6 +1,8 @@
 $(document).ready(function () {
     SCREEN_HEIGHT = window.innerHeight;
     SCREEN_WIDTH = window.innerWidth;
+    //Creacion de el array de el mapa que contiene los interactivos
+    game_InteractiveObjects = create2DArray(16);
     initMenuHandler();
     initKeyHandler();
     initDB();
@@ -12,22 +14,28 @@ function init() {
     initCanvas();
     initScene();
     HUD = new HUD();
-    character = new Character(1, 1, 1);
+    dialogManager = new DialogManager();
+    var arrayText = new Array();
+    //Prueba, esto se debe eliminar y cambiar con los textos correctos
+    arrayText.push("hola");
+    arrayText.push("hola2");
+    arrayText.push("hola3");
+    dialogManager.showText(arrayText);
+    character = new Character(1, 0, 0);
     gameCoolDown = setTimeout("gameLoop()", 1000);
 }
 
 function gameLoop() {
     BACKGROUND_CTX.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    INTERACTIVE_CTX.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    HUD_CTX.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     DIALOGS_CTX.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     //Dibujar mapa
     SCENE.draw();
     //Actualiza y pinta el hud;
     HUD.update();
-
+    //Actualiza el dialog manager
+    dialogManager.update();
     character.update();
-    //Dibujar bocadillo de texto
-    paintBubble();
 
     clearTimeout(gameCoolDown);
     gameCoolDown = setTimeout("gameLoop()", 33);
