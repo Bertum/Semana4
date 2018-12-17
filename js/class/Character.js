@@ -24,15 +24,19 @@ function Character(id, x, y) {
         switch (this.nextMove) {
             case enumDirection.UP:
                 this.x = this.x > 0 ? this.x - 1 : this.x;
+                this.checkTeleportUp();
                 break;
             case enumDirection.RIGHT:
                 this.y = this.y > 0 ? this.y - 1 : this.y;
+                this.checkTeleportRight();
                 break;
             case enumDirection.DOWN:
                 this.x = this.x < 15 ? this.x + 1 : this.x;
+                this.checkTeleportDown();
                 break;
             case enumDirection.LEFT:
                 this.y = this.y < 15 ? this.y + 1 : this.y;
+                this.checkTeleportLeft();
                 break;
             default:
                 break;
@@ -59,5 +63,35 @@ function Character(id, x, y) {
     this.setPosition = function (x, y) {
         this.x = x;
         this.y = y;
+    }
+
+    this.checkTeleportLeft = function () {
+        if (this.y + 1 > 15 && (this.x == 4 || this.x == 5 || this.x == 6) && CURRENT_SCENE == 1) {
+            CURRENT_SCENE = 2;
+            this.y = 0;
+            this.x += 2;
+        }
+    }
+
+    this.checkTeleportRight = function () {
+        if (this.y - 1 < 0 && (this.x == 10 || this.x == 11 || this.x == 12) && CURRENT_SCENE == 1) {
+            CURRENT_SCENE = 2;
+        } else if (this.y - 1 < 0 && (this.x == 6 || this.x == 7 || this.x == 8) && CURRENT_SCENE == 2) {
+            CURRENT_SCENE = 1;
+            this.y = 15;
+            this.x -= 2;
+        }
+    }
+
+    this.checkTeleportUp = function () {
+        if (this.x - 1 < 0 && (this.y == 7 || this.y == 8 || this.y == 9) && CURRENT_SCENE == 1) {
+            CURRENT_SCENE = 2;
+        }
+    }
+
+    this.checkTeleportDown = function () {
+        if (this.x + 1 > 15 && (this.y == 7 || this.y == 8 || this.y == 9) && CURRENT_SCENE == 1) {
+            CURRENT_SCENE = 2;
+        }
     }
 }
