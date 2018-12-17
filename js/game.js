@@ -22,7 +22,6 @@ function init() {
     arrayText.push("hola2");
     arrayText.push("hola3");
     dialogManager.showText(arrayText);
-    gameCoolDown = setTimeout("gameLoop()", 1000);
 }
 
 function gameLoop() {
