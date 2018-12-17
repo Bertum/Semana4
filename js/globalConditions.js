@@ -29,6 +29,9 @@ var game_InteractiveObjects;
 var SCENE;
 var CURRENT_SCENE = 1;
 
+//
+var INTERACTIVE_RESULTS;
+
 //ENUMS
 var ItemTypes = { "Wood": 0, "Water": 1, "Earth": 2, "Rock": 3 }
 Object.freeze(ItemTypes);

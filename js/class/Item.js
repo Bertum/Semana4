@@ -6,17 +6,34 @@ function Item(id, x, y, type, scene, wasted) {
     this.scene = scene;
     this.wasted = wasted;
     this.life = 5;
-
+    this.width;
+    this.height;
     this.sprite = new Image();
     this.wastedSprite;
+    this.proxX;
+    this.proyY;
 
     //Cargamos la imagen dependiendo de el tipo 
     switch (this.type) {
         case 1:
             this.sprite.src = "img/resources/tree.png";
+            var me = this;
+            this.sprite.addEventListener("load", function () {
+                //Once image loads do something
+                me.width = me.sprite.width;
+                me.height = me.sprite.height;
+                me.draw();
+            });
             break;
         case 2:
             this.sprite.src = "img/resources/rock3.png";
+            var me = this;
+            this.sprite.addEventListener("load", function () {
+                //Once image loads do something
+                me.width = me.sprite.width;
+                me.height = me.sprite.height;
+                me.draw();
+            });
             break;
         case 3:
             this.sprite = null;
@@ -49,7 +66,13 @@ function Item(id, x, y, type, scene, wasted) {
     this.draw = function () {
         if (!this.wasted && this.sprite != null) {
             //console.log("Pintamos x:" + this.x + " - y:" + this.y);
-            INTERACTIVE_CTX.drawImage(this.sprite, this.x, this.y);
+            var me = this;
+            worker_Position.postMessage({ "x": this.x, "y": this.y, "width": this.width, "height": this.height, "mapX": SCENE.width / 2, "mapY": 0, "tileWidth": SCENE.tileWidth, "tileHeight": SCENE.tileHeight });
+            worker_Position.onmessage = function (e) {
+                me.proxX = e.data[0];
+                me.proyY = e.data[1];
+                INTERACTIVE_CTX.drawImage(me.sprite, me.proxX, me.proyY);
+            }
         } else {
             // if (wastedSprite != null) {
             //     INTERACTIVE_CTX.drawImage(this.wastedSprite, this.x, this.y);

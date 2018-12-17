@@ -40,8 +40,13 @@ function Character(id, x, y) {
         this.nextMove = undefined;
         worker_Position.postMessage({ "x": this.x, "y": this.y, "width": this.width, "height": this.height, "mapX": SCENE.width / 2, "mapY": 0, "tileWidth": SCENE.tileWidth, "tileHeight": SCENE.tileHeight });
         worker_Position.onmessage = function (e) {
+<<<<<<< HEAD
             // console.log("Char dice que: " + character.x, character.y);
             // console.log("Pero worker dice que: " + e.data[0], e.data[1]);
+=======
+            //console.log("Char dice que: " + character.x, character.y);
+            //console.log("Pero worker dice que: " + e.data[0], e.data[1]);
+>>>>>>> 3f4a0a93f16073c6a0d4f3502e8a4667dd45d983
             character.proyX = e.data[0];
             character.proyY = e.data[1];
         }

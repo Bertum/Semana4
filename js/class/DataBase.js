@@ -65,7 +65,8 @@ function DataBase() {
         this.dataBase.transaction(function (tx) {
             tx.executeSql('SELECT * FROM INTERACTIVE WHERE scene=' + CURRENT_SCENE, [], function (tx, results) {
                 //console.log("Conseguimos los INTERACTIVE")
-                gameChangeScene(results);
+                INTERACTIVE_RESULTS = results;
+                drawInteractiveObjects(INTERACTIVE_RESULTS);
             });
         });
     }
