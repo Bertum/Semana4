@@ -7,7 +7,7 @@ function DialogManager() {
     this.enable = false;
     this.x = 0;
     this.y = SCREEN_HEIGHT - 250;
-    this.fontSize = "20px Arial";
+    this.fontSize = "50px Arial";
     this.draw = function () {
         if (this.enable) {
             DIALOGS_CTX.drawImage(this.sprite, this.x, this.y);
