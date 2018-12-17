@@ -10,30 +10,14 @@ function Item(id, x, y, type, scene, wasted) {
     this.height;
     this.sprite = new Image();
     this.wastedSprite;
-    this.proxX;
-    this.proyY;
 
     //Cargamos la imagen dependiendo de el tipo 
     switch (this.type) {
         case 1:
             this.sprite.src = "img/resources/tree.png";
-            var me = this;
-            this.sprite.addEventListener("load", function () {
-                //Once image loads do something
-                me.width = me.sprite.width;
-                me.height = me.sprite.height;
-                me.draw();
-            });
             break;
         case 2:
             this.sprite.src = "img/resources/rock3.png";
-            var me = this;
-            this.sprite.addEventListener("load", function () {
-                //Once image loads do something
-                me.width = me.sprite.width;
-                me.height = me.sprite.height;
-                me.draw();
-            });
             break;
         case 3:
             this.sprite = null;
@@ -73,13 +57,21 @@ function Item(id, x, y, type, scene, wasted) {
     this.draw = function () {
         if (!this.wasted && this.sprite != null) {
             //console.log("Pintamos x:" + this.x + " - y:" + this.y);
-            var me = this;
-            worker_Position.postMessage({ "x": this.x, "y": this.y, "width": this.width, "height": this.height, "mapX": SCENE.width / 2, "mapY": 0, "tileWidth": SCENE.tileWidth, "tileHeight": SCENE.tileHeight });
-            worker_Position.onmessage = function (e) {
-                me.proxX = e.data[0];
-                me.proyY = e.data[1];
-                INTERACTIVE_CTX.drawImage(me.sprite, me.proxX, me.proyY);
-            }
+            // var proyX;
+            // var proyY;
+            // var auxSprite = this.sprite;
+            // worker_Position.postMessage({ "x": this.x, "y": this.y, "width": this.sprite.width, "height": this.sprite.height, "mapX": SCENE.width / 2, "mapY": 0, "tileWidth": SCENE.tileWidth, "tileHeight": SCENE.tileHeight });
+            // worker_Position.onmessage = function (e) {
+            //     proyX = e.data[0];
+            //     proyY = e.data[1];
+            //     INTERACTIVE_CTX.drawImage(auxSprite, proyX, proyY);
+            // }
+            // var isoX = (this.x / 2 - this.y / 2);
+            // var isoY = (this.x / 2 + this.y / 2);
+            // isoX = (isoX * SCENE.tileWidth) + SCENE.width / 2 - (this.sprite.width / 2);
+            // isoY = (isoY * SCENE.tileHeight) + (SCENE.tileHeight / 2) - this.sprite.height;
+            var proy = calcIsoProyection(this.x, this.y, this.sprite);
+            INTERACTIVE_CTX.drawImage(this.sprite, proy.proyX, proy.proyY);
         } else {
             // if (wastedSprite != null) {
             //     INTERACTIVE_CTX.drawImage(this.wastedSprite, this.x, this.y);

@@ -115,7 +115,27 @@ function fillInteractiveObjects(datos) {
         }
     }
 }
+/**
+ * Calcula proyeccion isometrica con offsets
+ */
+function calcIsoProyection(x, y, imgSprite) {
+    var isoX = (x / 2 - y / 2);
+    var isoY = (x / 2 + y / 2);
+    isoX = (isoX * SCENE.tileWidth) + SCENE.width / 2 - (imgSprite.width / 2);
+    isoY = (isoY * SCENE.tileHeight) + (SCENE.tileHeight / 2) - imgSprite.height;
+    return { "proyX": isoX, "proyY": isoY }
+}
 
+function drawItems() {
+    for (var x = 0; x < 16; x++) {
+        for (var y = 0; y < 16; y++) {
+            var item = game_InteractiveObjects[x][y];
+            if (item != undefined) {
+                item.draw();
+            }
+        }
+    };
+}
 /**
  * Crear un array bidimensional de el tamaño pasado
  */

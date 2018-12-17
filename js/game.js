@@ -26,6 +26,7 @@ function init() {
 
 function gameLoop() {
     BACKGROUND_CTX.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    INTERACTIVE_CTX.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     PLAYER_CTX.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     HUD_CTX.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     DIALOGS_CTX.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -37,6 +38,7 @@ function gameLoop() {
     dialogManager.update();
     //drawInteractiveObjects(INTERACTIVE_RESULTS);
     character.update();
+    drawItems();
 
     clearTimeout(gameCoolDown);
     gameCoolDown = setTimeout("gameLoop()", 33);

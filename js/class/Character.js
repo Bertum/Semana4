@@ -23,8 +23,13 @@ function Character(id, x, y) {
     this.draw = function () {
         switch (this.nextMove) {
             case enumDirection.UP:
-                this.x = this.x > 0 ? this.x - 1 : this.x;
-                this.checkTeleportUp();
+                var mono = game_InteractiveObjects[this.x - 1][this.y];
+                if (mono != undefined && !mono.wasted) {
+                    mono.interact();
+                } else {
+                    this.x = this.x > 0 ? this.x - 1 : this.x;
+                    this.checkTeleportUp();
+                }
                 break;
             case enumDirection.RIGHT:
                 this.y = this.y > 0 ? this.y - 1 : this.y;
@@ -53,7 +58,7 @@ function Character(id, x, y) {
         // if (this.animationIndex == 11) {
         //     this.animationIndex = 0;
         // }
-        PLAYER_CTX.drawImage(this.sprite, this.animationIndex * 63, 0, 63, 110, this.proyX, this.proyY, 63, 101);
+        INTERACTIVE_CTX.drawImage(this.sprite, this.animationIndex * 63, 0, 63, 110, this.proyX, this.proyY, 63, 101);
     }
 
     this.update = function () {
