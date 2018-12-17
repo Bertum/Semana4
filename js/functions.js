@@ -88,7 +88,6 @@ function initDB() {
  * Carga los objetos interactivos de la escena actual,se llama desde el objeto data_base
  */
 function gameChangeScene(datos) {
-
     //Carga de estos en la matriz
     //Limpimiamos pantalla
     INTERACTIVE_CTX.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
