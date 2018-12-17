@@ -1,40 +1,26 @@
-$(document).keypress(function (event) {
-    if (event.key == "w") { character.advanceX = -1; character.sprite = character.spriteFrontRight; }
-    if (event.key == "s") { character.advanceX = 1; character.sprite = character.spriteBackLeft; }
-    if (event.key == "a") { character.advanceY = -1; character.sprite = character.spriteFrontLeft; }
-    if (event.key == "d") { character.advanceY = 1; character.sprite = character.spriteBackRight; }
-    if (event.key == "e") { dialogManager.checkNextText(); }
+/**
+ * Inicializa el control del jugador
+ */
+function initKeyHandler() {
+    $(document).keydown(function (event) {
+        if (event.key == "w") { character.nextMove = enumDirection.UP; character.sprite = character.spriteUp; }
+        if (event.key == "s") { character.nextMove = enumDirection.DOWN; character.sprite = character.spriteDown; }
+        if (event.key == "a") { character.nextMove = enumDirection.LEFT; character.sprite = character.spriteLeft; }
+        if (event.key == "d") { character.nextMove = enumDirection.RIGHT; character.sprite = character.spriteRight; }
+        if (event.key == "e") { dialogManager.checkNextText(); }
 
-    character.animationIndex++;
-    if (character.animationIndex == 11) {
-        character.animationIndex = 0;
-    }
-});
-$(document).keyup(function (event) {
-    if (event.key == "w") { character.advanceX = 0; }
-    // A or D
-    if (event.key == "a") { character.advanceY = 0; }
-    // S
-    if (event.key == "s") { character.advanceX = 0; }
-    //D
-    if (event.key == "d") { character.advanceY = 0; }
-    character.animationIndex = 0;
-});
+        // character.animationIndex++;
+        // if (character.animationIndex == 11) {
+        //     character.animationIndex = 0;
+        // }
+    });
+}
 
-function paintMap() {
-    //Deberíamos saber en qué mapa estamos
-    switch (CURRENT_SCENE) {
-        case 1:
-            BACKGROUND_CTX.drawImage(imgHome, 0, 0);
-            break;
-        case 2:
-            BACKGROUND_CTX.drawImage(imgForest, 0, 0);
-            break;
-        default:
-            BACKGROUND_CTX.drawImage(imgHome, 0, 0);
-            break;
-    }
-
+/**
+ * Inicializa el audio del juego.
+ */
+function initScene() {
+    SCENE = new Scene();
 }
 
 /**
@@ -128,7 +114,7 @@ function create2DArray(size) {
     // Creates all lines:
     for (var i = 0; i < size; i++) {
 
-        // Creates an empty line
+        // // Creates an empty line
         arr.push([]);
 
         // Adds cols to the empty line:

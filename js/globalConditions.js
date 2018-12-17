@@ -25,17 +25,19 @@ var INVENTORY;
 var game_InteractiveObjects;
 
 //MAPA
+var SCENE;
 var CURRENT_SCENE = 1;
-
-//MAPS
-var imgHome = new Image();
-imgHome.src = "img/map02.png";
-var imgForest = new Image();
-imgForest.src = "img/map10.png";
 
 //ENUMS
 var ItemTypes = { "Wood": 0, "Water": 1, "Earth": 2, "Rock": 3 }
 Object.freeze(ItemTypes);
+var enumDirection = {  //Dirección para NPCs y personaje.
+    RIGHT: 0,
+    DOWN: 1,
+    LEFT: 2,
+    UP: 3,
+};
+Object.freeze(enumDirection);
 
 //CHARACTER
 var character;
