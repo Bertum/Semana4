@@ -10,6 +10,13 @@ function init() {
     initAudio();
     initCanvas();
     HUD = new HUD();
+    dialogManager = new DialogManager();
+    var arrayText = new Array();
+    //Prueba, esto se debe eliminar y cambiar con los textos correctos
+    arrayText.push("hola");
+    arrayText.push("hola2");
+    arrayText.push("hola3");
+    dialogManager.showText(arrayText);
     character = new Character(1, 0, 0);
     gameCoolDown = setTimeout("gameLoop()", 1000);
 }
@@ -22,10 +29,9 @@ function gameLoop() {
     paintMap();
     //Actualiza y pinta el hud;
     HUD.update();
-
+    //Actualiza el dialog manager
+    dialogManager.update();
     character.update();
-    //Dibujar bocadillo de texto
-    paintBubble();
 
     clearTimeout(gameCoolDown);
     gameCoolDown = setTimeout("gameLoop()", 33);

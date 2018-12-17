@@ -3,7 +3,7 @@ $(document).keypress(function (event) {
     if (event.key == "s") { character.advanceX = 1; character.sprite = character.spriteBackLeft; }
     if (event.key == "a") { character.advanceY = -1; character.sprite = character.spriteFrontLeft; }
     if (event.key == "d") { character.advanceY = 1; character.sprite = character.spriteBackRight; }
-    if (event.key == "e") { }
+    if (event.key == "e") { dialogManager.checkNextText(); }
 
     character.animationIndex++;
     if (character.animationIndex == 11) {
@@ -20,17 +20,6 @@ $(document).keyup(function (event) {
     if (event.key == "d") { character.advanceY = 0; }
     character.animationIndex = 0;
 });
-
-function paintBubble() {
-    // hola
-    //bocadillo
-    // comentario prueba.
-    DIALOGS_CTX.drawImage(imgBocadillo, 0, 625);
-    DIALOGS_CTX.font = "30px Arial";
-    DIALOGS_CTX.fillText("- O me construyes una buena piscina o voy a mojarme con el vecino, y te recuerdo que el tampoco tiene piscina", 50, 725)
-    //Aqui deberiamos meter un boton continuar si sigue habiendo mas texto
-
-}
 
 function paintMap() {
     //Deberíamos saber en qué mapa estamos

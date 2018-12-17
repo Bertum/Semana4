@@ -30,10 +30,6 @@ imgHome.src = "img/map02.png";
 var imgForest = new Image();
 imgForest.src = "img/map10.png";
 
-//OTROS
-var imgBocadillo = new Image();
-imgBocadillo.src = "img/bocadillo.png";
-
 //ENUMS
 var ItemTypes = { "Wood": 0, "Water": 1, "Earth": 2, "Rock": 3 }
 Object.freeze(ItemTypes);
@@ -43,3 +39,6 @@ var character;
 
 //WORKERS
 var worker_Position = new Worker("js/isometricWorker.js");
+
+//Dialog manager
+var dialogManager;
