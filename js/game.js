@@ -35,6 +35,7 @@ function gameLoop() {
     HUD.update();
     //Actualiza el dialog manager
     dialogManager.update();
+    //drawInteractiveObjects(INTERACTIVE_RESULTS);
     character.update();
 
     clearTimeout(gameCoolDown);

@@ -89,7 +89,14 @@ function gameChangeScene(datos) {
     //Carga de estos en la matriz
     //Limpimiamos pantalla
     INTERACTIVE_CTX.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    //Limpiamos el array con los objetos.
+    game_InteractiveObjects = create2DArray(16);
     //Y creamos y pintamos cada item
+    fillInteractiveObjects(datos);
+
+}
+
+function fillInteractiveObjects(datos) {
     for (var i = 0; i < datos.rows.length; i++) {
         if (datos.rows[i].wasted == 0) {
             game_InteractiveObjects[datos.rows[i].x][datos.rows[i].y] = new Item(
@@ -100,7 +107,6 @@ function gameChangeScene(datos) {
                 datos.rows[i].scene,
                 datos.rows[i].wasted
             )
-            game_InteractiveObjects[datos.rows[i].x][datos.rows[i].y].draw();
         }
     }
 }
