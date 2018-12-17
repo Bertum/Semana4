@@ -29,14 +29,32 @@ function DataBase() {
             tx.executeSql('INSERT INTO ' + this.INVENTORY_TABLE + '(id, class, quantity) values(?, ?, ?)', [ItemTypes.Earth, "Earth", 0]);
             tx.executeSql('INSERT INTO ' + this.INVENTORY_TABLE + '(id, class, quantity) values(?, ?, ?)', [ItemTypes.Rock, "Rock", 0]);
         });
+
+        /**
+         * TODO Creamos todos los objetos interactivos de el juego
+         * (NPCS??????)
+         */
+        this.dataBase.transaction(function (tx) {
+            // Tabla INTERACTIVE
+            tx.executeSql('DELETE FROM INTERACTIVE');
+            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [1, 1, 0, 0, 0]);
+            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [1, 1, 0, 2, 0]);
+            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [1, 1, 2, 0, 0]);
+            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [1, 1, 15, 15, 0]);
+        });
     }
 
     /**
      * Devuelve una lista de objetos de un mapa según su ID.
      */
-    this.loadScene = function (sceneId) {
+    this.loadScene = function () {
+
         this.dataBase.transaction(function (tx) {
-            //TODO 
+            var inventory;
+            tx.executeSql('SELECT * FROM INTERACTIVE WHERE scene=' + CURRENT_SCENE, [], function (tx, results) {
+                //console.log("Conseguimos los INTERACTIVE")
+                gameChangeScene(results);
+            });
         });
     }
 

@@ -28,8 +28,8 @@ function Character(id, x, y) {
             //var projectionY = (this.x / 4 + this.y / 4);
             worker_Position.postMessage([this.x, this.y]);
             worker_Position.onmessage = function (e) {
-                console.log("Char dice que: " + character.x, character.y);
-                console.log("Pero worker dice que: " + e.data[0], e.data[1]);
+                //console.log("Char dice que: " + character.x, character.y);
+                //console.log("Pero worker dice que: " + e.data[0], e.data[1]);
                 character.test1 = e.data[0];
                 character.test2 = e.data[1];
                 //INTERACTIVE_CTX.drawImage(character.sprite, character.animationIndex * 63, 0, 63, 110, e.data[0], e.data[1], 63, 101);
