@@ -66,7 +66,7 @@ function DataBase() {
             tx.executeSql('SELECT * FROM INTERACTIVE WHERE scene=' + CURRENT_SCENE, [], function (tx, results) {
                 //console.log("Conseguimos los INTERACTIVE")
                 INTERACTIVE_RESULTS = results;
-                drawInteractiveObjects(INTERACTIVE_RESULTS);
+                fillInteractiveObjects(INTERACTIVE_RESULTS);
             });
         });
     }
