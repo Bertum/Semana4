@@ -24,6 +24,8 @@ var INVENTORY;
 
 //PARTIDA
 var game_InteractiveObjects;
+var game_momentum
+var game_buildings
 
 //MAPA
 var SCENE;

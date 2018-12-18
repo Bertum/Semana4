@@ -8,7 +8,7 @@ function initKeyHandler() {
         if (event.key == "a") { character.nextMove = enumDirection.LEFT; character.lastNextMove = enumDirection.LEFT; character.sprite = character.spriteLeft; }
         if (event.key == "d") { character.nextMove = enumDirection.RIGHT; character.lastNextMove = enumDirection.RIGHT; character.sprite = character.spriteRight; }
         if (event.key == "e") { character.interact() }
-        if (event.key == "f") { }
+        if (event.key == "f") { useMaterialsToBuild() }
 
         // character.animationIndex++;
         // if (character.animationIndex == 11) {
@@ -37,9 +37,8 @@ function initMenuHandler() {
     $("#menuPlay").click(function () {
         $("#menuScreen").fadeOut("slow");
         DATA_BASE.resetDataBase();
-        DATA_BASE.loadInventory();
         //Carga los objetos interactivos de la escena actual
-        DATA_BASE.loadScene();
+
         //AUDIO_MANAGER.playMusic();
         gameCoolDown = setTimeout("gameLoop()", 1000);
     });
@@ -47,7 +46,7 @@ function initMenuHandler() {
         $("#menuScreen").fadeOut("slow");
         DATA_BASE.loadInventory();
         //Carga los objetos interactivos de la escena actual
-        DATA_BASE.loadScene();
+
         //AUDIO_MANAGER.playMusic();
         gameCoolDown = setTimeout("gameLoop()", 1000);
     });
@@ -136,6 +135,12 @@ function drawItems() {
         }
     };
 }
+
+function drawBuildings() {
+    for (let index = 0; index < game_buildings.length; index++) {
+        game_buildings[index].draw();
+    }
+}
 /**
  * Crear un array bidimensional de el tamaño pasado
  */
@@ -154,4 +159,41 @@ function create2DArray(size) {
     };
 
     return arr;
+}
+
+function useMaterialsToBuild() {
+    var arrayMessage = new Array();
+
+    if (character.x < 7 && character.x > 3 && character.y == 7) {
+        console.log("situados")
+        switch (game_momentum) {
+            case 1:
+                if (INVENTORY.wood.quantity > 4 && INVENTORY.rock.quantity > 14 && INVENTORY.water.quantity > 19) {
+                    INVENTORY.wood.quantity -= 5;
+                    INVENTORY.rock.quantity -= 15;
+                    INVENTORY.water.quantity -= 20;
+                    console.log("VAMOS A ACTUALIZAR INVENTARIO")
+                    DATA_BASE.updateInventory();
+                    console.log("ACTUALIZADO")
+                    buildWaterPool();
+                    arrayMessage.push({ "dialog": "HAS CONSTRUIDO LA PISCINA!" });
+                    dialogManager.showText(arrayMessage);
+                    DATA_BASE.momentumIncrement();
+                } else {
+                    arrayMessage.push({ "dialog": "AUN NO DISPONES DE LOS MATERIALES" });
+                    dialogManager.showText(arrayMessage);
+                }
+                break;
+
+            default:
+                break;
+        }
+
+
+    }
+
+}
+
+function buildWaterPool() {
+    game_buildings.push(new Building(0, 6, 2));
 }

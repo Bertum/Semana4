@@ -1,5 +1,5 @@
 function DialogManager() {
-    this.text = new Array(); // Array de string
+    this.text = null; // Array de string
     this.currentText = "";
     this.currentIndex = 0;
     this.sprite = new Image();
@@ -18,22 +18,36 @@ function DialogManager() {
     }
 
     this.showText = function (text) {
-        character.textEnable = true;
-        this.text = text;
-        this.currentText = this.text[this.currentIndex];
-        this.enable = true;
+        if (this.text == null) {
+            character.textEnable = true;
+            this.text = new Array();
+            this.text = text;
+            this.currentText = this.text[this.currentIndex].dialog;
+            this.enable = true;
+        } else {
+            this.checkNextText();
+        }
     }
 
     this.update = function () {
         this.draw();
     }
 
+    // this.hide = function () {
+    //     clearTimeout(coolDown);
+    //     this.enable = false;
+    // }
+
     this.checkNextText = function () {
         this.currentIndex++;
-        var nextText = this.text[this.currentIndex]
-        if (nextText != null) {
-            this.currentText = nextText;
+        if (this.currentIndex < this.text.length) {
+            this.currentText = this.text[this.currentIndex].dialog;
         } else {
+            if (this.text.length > 1 && game_momentum != 1) {
+                DATA_BASE.momentumIncrement();
+            }
+
+            this.text = null;
             this.currentIndex = 0;
             this.enable = false;
             character.textEnable = false;
