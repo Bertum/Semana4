@@ -3,11 +3,11 @@
  */
 function initKeyHandler() {
     $(document).keydown(function (event) {
-        if (event.key == "w") { character.nextMove = enumDirection.UP; character.sprite = character.spriteUp; }
-        if (event.key == "s") { character.nextMove = enumDirection.DOWN; character.sprite = character.spriteDown; }
-        if (event.key == "a") { character.nextMove = enumDirection.LEFT; character.sprite = character.spriteLeft; }
-        if (event.key == "d") { character.nextMove = enumDirection.RIGHT; character.sprite = character.spriteRight; }
-        if (event.key == "e") { dialogManager.checkNextText(); }
+        if (event.key == "w") { character.nextMove = enumDirection.UP; character.lastNextMove = enumDirection.UP; character.sprite = character.spriteUp; }
+        if (event.key == "s") { character.nextMove = enumDirection.DOWN; character.lastNextMove = enumDirection.DOWN; character.sprite = character.spriteDown; }
+        if (event.key == "a") { character.nextMove = enumDirection.LEFT; character.lastNextMove = enumDirection.LEFT; character.sprite = character.spriteLeft; }
+        if (event.key == "d") { character.nextMove = enumDirection.RIGHT; character.lastNextMove = enumDirection.RIGHT; character.sprite = character.spriteRight; }
+        if (event.key == "e") { character.interact() }
         if (event.key == "f") { }
 
         // character.animationIndex++;

@@ -2,6 +2,7 @@ Mujer.prototype = Object.create(Npc.prototype);
 function Mujer(x, y) {
     Npc.call(this, x, y);
 
+
     this.images = new Array();
 
     //TODO cambiar sprites a las posiciones que tocan
@@ -14,11 +15,34 @@ function Mujer(x, y) {
     this.images[3] = new Image();
     this.images[3].src = "img/womanSprites/medusa4.png"
 
+    this.img = this.images[0];
 
+    this.interact = function () {
 
-    this.draw = function () {
-        this.img = this.images[this.direction];
-        Npc.draw();
+        switch (character.lastNextMove) {
+            case enumDirection.LEFT:
+                this.img = this.images[1];
+                break;
+            case enumDirection.UP:
+                this.img = this.images[3];
+                break;
+            case enumDirection.RIGHT:
+                this.img = this.images[0];
+                break;
+
+            default:
+                break;
+        }
+        this.talk();
     }
 
+    this.draw = function () {
+        var valores = calcIsoProyection(this.x, this.y, this.img);
+        if (CURRENT_SCENE == 1) {
+            game_InteractiveObjects[7][6] = this;
+            INTERACTIVE_CTX.drawImage(this.img, valores.proyX, valores.proyY);
+        } else if (CURRENT_SCENE > 1) {
+            game_InteractiveObjects[7][6] = undefined;
+        }
+    }
 }
