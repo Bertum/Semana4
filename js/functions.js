@@ -39,7 +39,7 @@ function initMenuHandler() {
         DATA_BASE.resetDataBase();
         //Carga los objetos interactivos de la escena actual
 
-        //AUDIO_MANAGER.playMusic();
+        AUDIO_MANAGER.playMusic();
         gameCoolDown = setTimeout("gameLoop()", 1000);
     });
     $("#menuContinue").click(function () {
@@ -47,7 +47,7 @@ function initMenuHandler() {
         DATA_BASE.loadInventory();
         //Carga los objetos interactivos de la escena actual
 
-        //AUDIO_MANAGER.playMusic();
+        AUDIO_MANAGER.playMusic();
         gameCoolDown = setTimeout("gameLoop()", 1000);
     });
     $("#menuHowToPlay").click(function () {
@@ -186,6 +186,7 @@ function useMaterialsToBuild() {
                 break;
 
             default:
+                dialogManager.hideText();
                 break;
         }
 
@@ -196,4 +197,12 @@ function useMaterialsToBuild() {
 
 function buildWaterPool() {
     game_buildings.push(new Building(0, 6, 2));
+    for (var x = 2; x <= 6; x++) {
+        for (var y = 0; y <= 2; y++) {
+            DATA_BASE.insertInteractive(3, 1, x, y, 0)
+        }
+    }
+    setTimeout(new function () {
+        DATA_BASE.loadScene();
+    }, 500);
 }

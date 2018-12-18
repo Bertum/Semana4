@@ -17,7 +17,7 @@ function Building(type, x, y) {
     this.draw = function () {
         if (CURRENT_SCENE == 1) {
             var valores = calcIsoProyection(this.x, this.y, this.img)
-            INTERACTIVE_CTX.drawImage(this.img, valores.proyX, valores.proyY);
+            BACKGROUND_CTX.drawImage(this.img, valores.proyX, valores.proyY);
         }
     }
 }

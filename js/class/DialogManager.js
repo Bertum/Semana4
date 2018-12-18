@@ -47,10 +47,14 @@ function DialogManager() {
                 DATA_BASE.momentumIncrement();
             }
 
-            this.text = null;
-            this.currentIndex = 0;
-            this.enable = false;
-            character.textEnable = false;
+            this.hideText();
         }
+    }
+
+    this.hideText = function () {
+        this.text = null;
+        this.currentIndex = 0;
+        this.enable = false;
+        character.textEnable = false;
     }
 }

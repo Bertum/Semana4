@@ -127,6 +127,12 @@ function DataBase() {
 
     }
 
+    this.insertInteractive = function (type, scene, x, y, wasted) {
+        this.dataBase.transaction(function (tx) {
+            tx.executeSql('INSERT INTO INTERACTIVE (type, scene,x,y,wasted) values(?, ?, ?, ?, ?)', [type, scene, x, y, wasted]);
+        });
+    }
+
     /**
      * Devuelve una lista de objetos de un mapa según su ID.
      */
@@ -205,8 +211,11 @@ function DataBase() {
                                 break;
                             case 5:
                                 //guarda momentum
-                                console.log("MOMENTUM VALOR: " + results.rows[i].quantity)
-                                game_momentum = results.rows[i].quantity
+                                console.log("MOMENTUM VALOR: " + results.rows[i].quantity);
+                                game_momentum = results.rows[i].quantity;
+                                if (game_momentum == 3) {
+                                    game_buildings.push(new Building(0, 6, 2));
+                                }
                                 break;
                         }
                     }
