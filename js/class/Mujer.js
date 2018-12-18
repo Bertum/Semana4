@@ -39,10 +39,10 @@ function Mujer(x, y) {
     this.draw = function () {
         var valores = calcIsoProyection(this.x, this.y, this.img);
         if (CURRENT_SCENE == 1) {
-            game_InteractiveObjects[7][6] = this;
+            game_InteractiveObjects[9][6] = this;
             INTERACTIVE_CTX.drawImage(this.img, valores.proyX, valores.proyY);
         } else if (CURRENT_SCENE > 1) {
-            game_InteractiveObjects[7][6] = undefined;
+            game_InteractiveObjects[9][6] = undefined;
         }
     }
 }

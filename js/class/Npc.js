@@ -19,8 +19,8 @@ function Npc(x, y) {
     this.talk = function () {
 
         //TODO Aqui recojo el texto a pintar
+        DATA_BASE.loadDialog(1);
 
-        //TODO Lammar a la funcion que pinta el texto por pantalla
 
     }
 

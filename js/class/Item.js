@@ -28,7 +28,7 @@ function Item(id, x, y, type, scene, wasted) {
 
     this.interact = function () {
         if (!this.wasted) {
-            console.log(this.type)
+
             switch (this.type) {
                 case 2:
                     this.life--;
@@ -45,14 +45,16 @@ function Item(id, x, y, type, scene, wasted) {
                     AUDIO_MANAGER.playWoodSound();
                     INVENTORY.wood.quantity++;
                     break;
+
                 case 4:
-                    //TODO sacar texto
+                    console.log("entra")
+                    DATA_BASE.loadDialog(2);
                     break;
             }
+            DATA_BASE.updateInventory();
             if (this.life == 0) {
                 this.remove();
             }
-            //TODO Peticion de actu de base de datos
         }
     }
 
@@ -85,15 +87,6 @@ function Item(id, x, y, type, scene, wasted) {
 
     this.remove = function () {
         this.wasted = true;
-        for (let i = 0; i < game_InteractiveObjects.length; i++) {
-            for (let a = 0; a < game_InteractiveObjects.length; a++) {
-                if (game_InteractiveObjects[i][a] != undefined) {
-                    if (game_InteractiveObjects[i][a].id == this.id) {
-                        game_InteractiveObjects[i][a] = undefined;
-                    }
-                }
-            }
-        }
-        //TODO Hacer peticion a la BD para ponerlo en wasted
+        DATA_BASE.updateInteractive(this.id)
     }
 }

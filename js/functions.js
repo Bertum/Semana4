@@ -8,7 +8,7 @@ function initKeyHandler() {
         if (event.key == "a") { character.nextMove = enumDirection.LEFT; character.lastNextMove = enumDirection.LEFT; character.sprite = character.spriteLeft; }
         if (event.key == "d") { character.nextMove = enumDirection.RIGHT; character.lastNextMove = enumDirection.RIGHT; character.sprite = character.spriteRight; }
         if (event.key == "e") { character.interact() }
-        if (event.key == "f") { }
+        if (event.key == "f") { useMaterialsToBuild() }
 
         // character.animationIndex++;
         // if (character.animationIndex == 11) {
@@ -37,9 +37,8 @@ function initMenuHandler() {
     $("#menuPlay").click(function () {
         $("#menuScreen").fadeOut("slow");
         DATA_BASE.resetDataBase();
-        DATA_BASE.loadInventory();
         //Carga los objetos interactivos de la escena actual
-        DATA_BASE.loadScene();
+
         //AUDIO_MANAGER.playMusic();
         gameCoolDown = setTimeout("gameLoop()", 1000);
     });
@@ -47,7 +46,7 @@ function initMenuHandler() {
         $("#menuScreen").fadeOut("slow");
         DATA_BASE.loadInventory();
         //Carga los objetos interactivos de la escena actual
-        DATA_BASE.loadScene();
+
         //AUDIO_MANAGER.playMusic();
         gameCoolDown = setTimeout("gameLoop()", 1000);
     });
@@ -154,4 +153,38 @@ function create2DArray(size) {
     };
 
     return arr;
+}
+
+function useMaterialsToBuild() {
+    var arrayMessage = new Array();
+
+    if (character.x < 7 && character.x > 3 && character.y == 7) {
+        switch (game_momentum) {
+            case 2:
+                if (INVENTORY.wood.quantity > 5 && INVENTORY.rock.quantity > 15 && INVENTORY.water.quantity > 20) {
+                    INVENTORY.wood.quantity -= 5;
+                    INVENTORY.rock.quantity -= 15;
+                    INVENTORY.water.quantity -= 20;
+                    DATA_BASE.updateInventory();
+                    buildWaterPool();
+                    arrayMessage.push({ "dialog": "HAS CONSTRUIDO LA PISCINA!" });
+                    dialogManager.showText(arrayMessage);
+                    DATA_BASE.momentumIncrement();
+                } else {
+                    arrayMessage.push({ "dialog": "AUN NO DISPONES DE LOS MATERIALES" });
+                    dialogManager.showText(arrayMessage);
+                }
+                break;
+
+            default:
+                break;
+        }
+
+
+    }
+
+}
+
+function buildWaterPool() {
+    game_buildings.push(new Building(0, 4, 1));
 }

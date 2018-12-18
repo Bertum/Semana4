@@ -3,6 +3,7 @@ $(document).ready(function () {
     SCREEN_WIDTH = window.innerWidth;
     //Creacion de el array de el mapa que contiene los interactivos
     game_InteractiveObjects = create2DArray(16);
+    game_buildings = new Array();
     initMenuHandler();
     initKeyHandler();
     initDB();
@@ -15,7 +16,7 @@ function init() {
     initScene();
     HUD = new HUD();
     character = new Character(1, 5, 8);
-    mujer = new Mujer(7, 6);
+    mujer = new Mujer(9, 6);
     dialogManager = new DialogManager();
     var arrayText = new Array();
     //Prueba, esto se debe eliminar y cambiar con los textos correctos
