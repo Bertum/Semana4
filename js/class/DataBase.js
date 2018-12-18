@@ -54,7 +54,12 @@ function DataBase() {
             tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [9, "¿Me construyes una piscina?", 2, 1, 0], function () { }, function () { console.log("error") });
 
             //Randoms Mujer
-            tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [80, "Muevete de una vez", 0, 1, 1], function () { }, function () { console.log("error") });
+            tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [86, "A Ferran no le gusta que las casas hablen", 0, 1, 1], function () { }, function () { console.log("error") });
+            tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [87, "Osanfer puede llegar a ser muy controlador...", 0, 1, 1], function () { }, function () { console.log("error") });
+            tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [88, "Magudob está pensando que el master de diseño le pega más", 0, 1, 1], function () { }, function () { console.log("error") });
+            tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [89, "Bertum siempre dice si. ¡A todo!", 0, 1, 1], function () { }, function () { console.log("error") });
+            tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [89, "Bertum siempre dice si. ¡A todo!", 0, 1, 1], function () { }, function () { console.log("error") });
+            tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [90, "https://www.destroyallsoftware.com/talks/wat", 0, 1, 1], function () { }, function () { console.log("error") });
             tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [81, "¿Me ves cara de que lo vaya a hacer yo?", 0, 1, 1], function () { }, function () { console.log("error") });
             tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [82, "¿Necesitas ayuda? a mi que me cuentas", 0, 1, 1], function () { }, function () { console.log("error") });
             tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [83, "Los he visto más rápidos", 0, 1, 1], function () { }, function () { console.log("error") });
