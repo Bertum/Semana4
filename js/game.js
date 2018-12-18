@@ -42,7 +42,7 @@ function gameLoop() {
     mujer.draw();
     character.update();
     drawItems();
-
+    drawBuildings();
 
     clearTimeout(gameCoolDown);
     gameCoolDown = setTimeout("gameLoop()", 33);

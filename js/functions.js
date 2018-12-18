@@ -135,6 +135,12 @@ function drawItems() {
         }
     };
 }
+
+function drawBuildings() {
+    for (let index = 0; index < game_buildings.length; index++) {
+        game_buildings[index].draw();
+    }
+}
 /**
  * Crear un array bidimensional de el tamaño pasado
  */
@@ -159,13 +165,16 @@ function useMaterialsToBuild() {
     var arrayMessage = new Array();
 
     if (character.x < 7 && character.x > 3 && character.y == 7) {
+        console.log("situados")
         switch (game_momentum) {
-            case 2:
-                if (INVENTORY.wood.quantity > 5 && INVENTORY.rock.quantity > 15 && INVENTORY.water.quantity > 20) {
+            case 1:
+                if (INVENTORY.wood.quantity > 4 && INVENTORY.rock.quantity > 14 && INVENTORY.water.quantity > 19) {
                     INVENTORY.wood.quantity -= 5;
                     INVENTORY.rock.quantity -= 15;
                     INVENTORY.water.quantity -= 20;
+                    console.log("VAMOS A ACTUALIZAR INVENTARIO")
                     DATA_BASE.updateInventory();
+                    console.log("ACTUALIZADO")
                     buildWaterPool();
                     arrayMessage.push({ "dialog": "HAS CONSTRUIDO LA PISCINA!" });
                     dialogManager.showText(arrayMessage);
@@ -186,5 +195,5 @@ function useMaterialsToBuild() {
 }
 
 function buildWaterPool() {
-    game_buildings.push(new Building(0, 4, 1));
+    game_buildings.push(new Building(0, 6, 2));
 }

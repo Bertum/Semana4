@@ -27,6 +27,7 @@ function Item(id, x, y, type, scene, wasted) {
     }
 
     this.interact = function () {
+        console.log("TYPE: " + this.type)
         if (!this.wasted) {
 
             switch (this.type) {

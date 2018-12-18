@@ -107,6 +107,7 @@ function Character(id, x, y) {
         }
         if (objX != null) {
             if (game_InteractiveObjects[objX][objY] != undefined) {
+                console.log("interactua con objeto")
                 game_InteractiveObjects[objX][objY].interact();
             }
         }
