@@ -44,22 +44,22 @@ function DataBase() {
             tx.executeSql("DELETE FROM DIALOGS", [], function () { }, function () { console.log("Could not delete") });
             tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [0, "Hola cariño, pulsa la E para asentir con la cabeza", 0, 1, 0], function () { }, function () { console.log("error") });
             tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [1, "Necesito que hagas una cosa por mi", 0, 1, 0], function () { }, function () { console.log("error") });
-            tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [2, "Me construyes una piscina?", 0, 1, 0], function () { }, function () { console.log("error") });
-            tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [3, "En la casa estan los planos,ve allí", 0, 1, 0], function () { }, function () { console.log("error") });
-            tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [4, "Hola soy la casa parlante constructora,si,tiene poca logica,lo se", 1, 2, 0], function () { }, function () { console.log("error") });
+            tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [2, "¿Me construyes una piscina?", 0, 1, 0], function () { }, function () { console.log("error") });
+            tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [3, "En la casa están los planos, ve allí", 0, 1, 0], function () { }, function () { console.log("error") });
+            tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [4, "Hola soy la casa parlante constructora, si, tiene poca lógica, lo se", 1, 2, 0], function () { }, function () { console.log("error") });
             tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [5, "Para hacer la piscina necesitas los siguientes materiales", 1, 2, 0], function () { }, function () { console.log("error") });
             tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [6, "Madera x5 - Roca x15 - Agua x20", 1, 2, 0], function () { }, function () { console.log("error") });
             tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [7, "Si ya has conseguido los materiales pulsa la F despues de hablar conmigo", 1, 2, 0], function () { }, function () { console.log("error") });
             tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [8, "Siguiente favor", 2, 1, 0], function () { }, function () { console.log("error") });
-            tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [9, "Me construyes una piscina?", 2, 1, 0], function () { }, function () { console.log("error") });
+            tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [9, "¿Me construyes una piscina?", 2, 1, 0], function () { }, function () { console.log("error") });
 
             //Randoms Mujer
-            tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [80, "Bueno, muevete de una vez no?", 0, 1, 1], function () { }, function () { console.log("error") });
+            tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [80, "Muevete de una vez", 0, 1, 1], function () { }, function () { console.log("error") });
             tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [81, "¿Me ves cara de que lo vaya a hacer yo?", 0, 1, 1], function () { }, function () { console.log("error") });
             tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [82, "¿Necesitas ayuda? a mi que me cuentas", 0, 1, 1], function () { }, function () { console.log("error") });
-            tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [83, "He visto de mas rapidos", 0, 1, 1], function () { }, function () { console.log("error") });
+            tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [83, "Los he visto más rápidos", 0, 1, 1], function () { }, function () { console.log("error") });
             tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [84, "¿Este vestido me hace gorda?", 0, 1, 1], function () { }, function () { console.log("error") });
-            tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [85, "Porque pones esa cara? pareces petrificado", 0, 1, 1], function () { }, function () { console.log("error") });
+            tx.executeSql('INSERT INTO DIALOGS (id, dialog, momentum,owner,random) values(?, ?, ?, ?, ?)', [85, "¿Por que vas vestido de caballero?", 0, 1, 1], function () { }, function () { console.log("error") });
 
             // Tabla INTERACTIVE
             tx.executeSql('DELETE FROM INTERACTIVE', [], function () { }, function () { console.log("Could not delete") });
