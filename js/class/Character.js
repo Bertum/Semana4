@@ -15,37 +15,15 @@ function Character(id, x, y) {
     this.width = 58;
     this.height = 98;
     this.nextMove;
+    this.lastNextMove = 0;
     this.animationIndex = 0;
     this.proyX = 1;
     this.proyY = 1;
     this.textEnable = false;
 
+
     this.draw = function () {
-        switch (this.nextMove) {
-            case enumDirection.UP:
-                var mono = game_InteractiveObjects[this.x - 1][this.y];
-                if (mono != undefined && !mono.wasted) {
-                    mono.interact();
-                } else {
-                    this.x = this.x > 0 ? this.x - 1 : this.x;
-                    this.checkTeleportUp();
-                }
-                break;
-            case enumDirection.RIGHT:
-                this.y = this.y > 0 ? this.y - 1 : this.y;
-                this.checkTeleportRight();
-                break;
-            case enumDirection.DOWN:
-                this.x = this.x < 15 ? this.x + 1 : this.x;
-                this.checkTeleportDown();
-                break;
-            case enumDirection.LEFT:
-                this.y = this.y < 15 ? this.y + 1 : this.y;
-                this.checkTeleportLeft();
-                break;
-            default:
-                break;
-        }
+
         this.nextMove = undefined;
         worker_Position.postMessage({ "x": this.x, "y": this.y, "width": this.width, "height": this.height, "mapX": SCENE.width / 2, "mapY": 0, "tileWidth": SCENE.tileWidth, "tileHeight": SCENE.tileHeight });
         worker_Position.onmessage = function (e) {
@@ -62,8 +40,78 @@ function Character(id, x, y) {
     }
 
     this.update = function () {
+        switch (this.nextMove) {
+            case enumDirection.UP:
+                if (this.x > 0 && game_InteractiveObjects[this.x - 1][this.y] == undefined) {
+                    this.x -= 1;
+                    this.checkTeleportUp();
+                }
+                break;
+            case enumDirection.RIGHT:
+                if (this.y > 0 && game_InteractiveObjects[this.x][this.y - 1] == undefined) {
+                    this.y -= 1;
+                    this.checkTeleportRight();
+                }
+                break;
+            case enumDirection.DOWN:
+                if (this.x < 15 && game_InteractiveObjects[this.x + 1][this.y] == undefined) {
+                    this.x += 1;
+                    this.checkTeleportDown();
+                }
+                break;
+            case enumDirection.LEFT:
+                if (this.y < 15 && game_InteractiveObjects[this.x][this.y + 1] == undefined) {
+                    this.y += 1;
+                    this.checkTeleportLeft();
+                }
+                break;
+            default:
+                break;
+        }
+
         this.draw();
     }
+
+    this.interact = function () {
+        var objX = null;
+        var objY = null;
+        switch (this.lastNextMove) {
+            case enumDirection.UP:
+                if (this.x > 0) {
+                    objX = this.x - 1;
+                    objY = this.y;
+                }
+                break;
+            case enumDirection.RIGHT:
+                if (this.y > 0) {
+                    objX = this.x;
+                    objY = this.y - 1;
+                }
+                break;
+            case enumDirection.DOWN:
+                if (this.x < 15) {
+                    objX = this.x + 1;
+                    objY = this.y;
+                }
+
+                break;
+            case enumDirection.LEFT:
+                if (this.y < 15) {
+                    objX = this.x;
+                    objY = this.y + 1;
+                }
+                break;
+            default:
+                break;
+        }
+        if (objX != null) {
+            if (game_InteractiveObjects[objX][objY] != undefined) {
+                game_InteractiveObjects[objX][objY].interact();
+            }
+        }
+
+    }
+
 
     this.setPosition = function (x, y) {
         this.x = x;

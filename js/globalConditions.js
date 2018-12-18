@@ -33,7 +33,7 @@ var CURRENT_SCENE = 1;
 var INTERACTIVE_RESULTS;
 
 //ENUMS
-var ItemTypes = { "Wood": 0, "Water": 1, "Earth": 2, "Rock": 3 }
+var ItemTypes = { "Wood": 0, "Water": 1, "Rock": 3 }
 Object.freeze(ItemTypes);
 var enumDirection = {  //Dirección para NPCs y personaje.
     RIGHT: 0,
@@ -45,6 +45,7 @@ Object.freeze(enumDirection);
 
 //CHARACTER
 var character;
+var mujer;
 
 //WORKERS
 var worker_Position = new Worker("js/isometricWorker.js");

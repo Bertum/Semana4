@@ -14,14 +14,15 @@ function init() {
     initCanvas();
     initScene();
     HUD = new HUD();
-    character = new Character(1, 0, 0);
+    character = new Character(1, 5, 8);
+    mujer = new Mujer(7, 6);
     dialogManager = new DialogManager();
     var arrayText = new Array();
     //Prueba, esto se debe eliminar y cambiar con los textos correctos
-    arrayText.push("hola");
-    arrayText.push("hola2");
-    arrayText.push("hola3");
-    dialogManager.showText(arrayText);
+    // arrayText.push("hola");
+    // arrayText.push("hola2");
+    // arrayText.push("hola3");
+    // dialogManager.showText(arrayText);
 }
 
 function gameLoop() {
@@ -37,8 +38,10 @@ function gameLoop() {
     //Actualiza el dialog manager
     dialogManager.update();
     //drawInteractiveObjects(INTERACTIVE_RESULTS);
+    mujer.draw();
     character.update();
     drawItems();
+
 
     clearTimeout(gameCoolDown);
     gameCoolDown = setTimeout("gameLoop()", 33);

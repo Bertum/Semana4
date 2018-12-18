@@ -14,18 +14,26 @@ function AudioManager() {
     }
 
     this.playWaterSound = function () {
+        this.waterSound.pause();
+        this.waterSound.currentTime = 0.0;
         this.waterSound.play();
     }
 
     this.playWoodSound = function () {
+        this.woodSound.pause();
+        this.woodSound.currentTime = 0.0;
         this.woodSound.play();
     }
 
     this.playMiningSound = function () {
+        this.miningSound.pause();
+        this.miningSound.currentTime = 0.0;
         this.miningSound.play();
     }
 
     this.playWinSound = function () {
+        this.winSound.pause();
+        this.winSound.currentTime = 0.0;
         this.winSound.play();
     }
 }

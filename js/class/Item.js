@@ -22,28 +22,31 @@ function Item(id, x, y, type, scene, wasted) {
         case 3:
             this.sprite = null;
             break;
-        case 4:
-            this.sprite = null;
-            break;
         default:
             break;
     }
 
     this.interact = function () {
         if (!this.wasted) {
-            this.life--;
-            switch (this.itemType) {
-                case ItemTypes.Mineral:
+            console.log(this.type)
+            switch (this.type) {
+                case 2:
+                    this.life--;
                     AUDIO_MANAGER.playMiningSound();
                     INVENTORY.rock.quantity++;
                     break;
-                case ItemTypes.Water:
+                case 3:
+                    //this.life--;
                     AUDIO_MANAGER.playWaterSound();
                     INVENTORY.water.quantity++;
                     break;
-                case ItemTypes.Wood:
+                case 1:
+                    this.life--;
                     AUDIO_MANAGER.playWoodSound();
                     INVENTORY.wood.quantity++;
+                    break;
+                case 4:
+                    //TODO sacar texto
                     break;
             }
             if (this.life == 0) {
@@ -72,10 +75,6 @@ function Item(id, x, y, type, scene, wasted) {
             // isoY = (isoY * SCENE.tileHeight) + (SCENE.tileHeight / 2) - this.sprite.height;
             var proy = calcIsoProyection(this.x, this.y, this.sprite);
             INTERACTIVE_CTX.drawImage(this.sprite, proy.proyX, proy.proyY);
-        } else {
-            // if (wastedSprite != null) {
-            //     INTERACTIVE_CTX.drawImage(this.wastedSprite, this.x, this.y);
-            // }
         }
     }
 
@@ -86,7 +85,15 @@ function Item(id, x, y, type, scene, wasted) {
 
     this.remove = function () {
         this.wasted = true;
-
+        for (let i = 0; i < game_InteractiveObjects.length; i++) {
+            for (let a = 0; a < game_InteractiveObjects.length; a++) {
+                if (game_InteractiveObjects[i][a] != undefined) {
+                    if (game_InteractiveObjects[i][a].id == this.id) {
+                        game_InteractiveObjects[i][a] = undefined;
+                    }
+                }
+            }
+        }
         //TODO Hacer peticion a la BD para ponerlo en wasted
     }
 }
