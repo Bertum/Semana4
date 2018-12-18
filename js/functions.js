@@ -176,7 +176,7 @@ function useMaterialsToBuild() {
                     DATA_BASE.updateInventory();
                     console.log("ACTUALIZADO")
                     buildWaterPool();
-                    arrayMessage.push({ "dialog": "HAS CONSTRUIDO LA PISCINA!" });
+                    arrayMessage.push({ "dialog": "¡HAS CONSTRUIDO LA PISCINA!" });
                     dialogManager.showText(arrayMessage);
                     DATA_BASE.momentumIncrement();
                 } else {
